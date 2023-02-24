@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://samaracosmetics.com/wp-content/uploads/2019/03/Logo.png">
+    <title>Desarollo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light "
+        style="background: #fff; border-bottom: 1px solid #f28367; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../index.html">
+                <img src="https://samaracosmetics.com/wp-content/uploads/2019/03/Logo.png" alt="" width="100"
+                    height="50" style="border-radius: 5%; background: #ffff;" class="d-inline-block align-text-top"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarNav">
+                <ul class="navbar-nav " style="margin-left: auto;">
+                    <li class="nav-item">
+                        <a class="nav-link" style="font-weight: bold; color: #f28367;" aria-current="page"
+                            href="casos.html" id="registro">Casos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="font-weight: bold; color: #f28367;" aria-current="page"
+                            href="consultas.html" id="asignaciones">Consultas</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="#" data-bs-toggle='modal' data-bs-target='#signupModal'
+                            style="font-weight: bold; color: #f28367; display: none;" aria-current="page">Crear
+                            usuario</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="entrar" data-bs-toggle='modal' data-bs-target='#signinModal'
+                            style="font-weight: bold; color: #f28367;" aria-current="page">Entrar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="logout" style="font-weight: bold; color: #f28367;"
+                            aria-current="page">Salir</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" id="editor">
+        <div class="card mt-5 mb-5"
+            style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+            <!--inicio card body 1-->
+            <div class="card-header">
+                <strong style="display: flex; justify-content: center;">FORMATO</strong>
+                <hr>
+                <strong style= "display: flex; justify-content: center;">Requerimientos del Cliente</strong>
+                <input type="text" style="float: right;  margin-top: 15px; border: none; font-weight: bold; color: #00A651;" disabled id= "usuarioIni">
+            </div>
+            <div class="card-body">
+                <label for="" style="">Código:</label> <input style="min-width: 8%; max-width: 40px; border-style: none;" type="text" id="codigo" value="FO-SIG-08" disabled>
+
+                <label for="">Versión:</label> <input style="min-width: 8%; max-width: 30px; border-style: none;"
+                    type="text" id="version" value="08" disabled>
+
+                <label for="">Fecha:</label><input style="width: 11%; border-style: none;" type="date" id="fechaVer"
+                    value="2021-12-01" disabled>
+
+                <input type="button" value="Registrar" id="idregis" style="float: right; margin-left: 1%;"
+                    onclick="registrar()" class="btn btn-success">
+
+                <input
+                    style="float: right; border-style: none; width: 100px; text-align: center; font-weight: bold; color: rgb(252, 9, 9);"
+                    id="caso" type="number" value="1" disabled><label style="float: right; ">Caso
+                    N°:</label>
+
+                <input type="date" style="min-width: 10%; float: right; margin-right: 2%; " id="fech"
+                    placeholder="Fecha"><label style="float: right; margin-right: 0.5%; ">Fecha:</label>
+            </div>
+            <div class="card-header">
+                <strong style="display: flex; justify-content: center;">Espacio diligenciado por quien recibe el requerimiento del cliente</strong>
+            </div>
+            <input type="text" id="codLista" style="display: none;">
+            <div class="card-body">
+                <!---->
+                <div class="card-header">
+                    <strong style="display: flex; justify-content: center;"> 1. información del cliente </strong>
+                </div>
+                <div class="input-group " style="margin-top: 20px;">
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="name" placeholder="name@example.com"
+                            onchange="Nit(this.value)">
+                        <label for="name">Nombre del Cliente</label>
+                    </div>
+
+                    <div class="form-floating mb-3" style='margin-left: 1%;'>
+                        <input type="number" class="form-control" id="number" placeholder="name@example.com">
+                        <label for="number">Número de contacto</label>
+                    </div>
+
+                    <div class="form-floating mb-3" style="margin-left: 1%;">
+                        <input type="text" class="form-control" id="marca" placeholder="name@example.com">
+                        <label for="marca">Marca</label>
+                    </div>
+                </div><div class="card-header">
+                    <strong style="display: flex; justify-content: center;"> 2. información del Producto </strong>
+                </div>
+                <div class="input-group prodinfo">
+
+                    <div class="form-floating p2 mb-3">
+                        <input type="text" class="form-control" id="nompro" placeholder="name@example.com">
+                        <label for="nompro">Nombre del Producto en Desarrollo</label>
+                    </div>
+
+                    <div class="form-floating p2 mb-3" style="height: 100px;">
+                        <input type="text" class="form-control" id="colorDescription" placeholder="name@example.com" style="height: 100px;">
+                        <label for="colordescription">Descripción del color simple</label>
+                    </div>
+
+                    <div class="form-floating p2 mb-3" style="height: 100px;">
+                        <input type="text" class="form-control" id="olorDescription" placeholder="name@example.com" style="height: 100px;">
+                        <label for="olorDescription">Descripción de olor simple</label>
+                    </div>
+                    <div class="form-floating mb-3"style="display: flex; width: 100%;">
+                        <div class="left-title">Forma Cosmetica:</div>
+                        <input type="text" class="form-control" id="muestra2" placeholder="Seleccione su area" list="reposici2">
+                        <datalist id="reposici2">
+                            <option >Forma cosmetica 1</option>
+                            <option >Forma cosmetica 2</option>
+                        </datalist>
+                    </div>
+                </div>
+
+
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="https://samaracosmetics.com/wp-content/uploads/2019/03/Logo.png">
+    <title>Calidad</title>
+    <!--sweet alert-->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <!--pdf-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+
+    <!--firebase-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
+    <!--
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-storage.js"></script>-->
+
+
+    <!--bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light "
+        style="background: #fff; border-bottom: 1px solid #f28367; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../index.html">
+                <img src="https://samaracosmetics.com/wp-content/uploads/2019/03/Logo.png" alt="" width="100"
+                    height="50" style="border-radius: 5%; background: #ffff;" class="d-inline-block align-text-top"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarNav">
+                <ul class="navbar-nav " style="margin-left: auto;">
+                    <li class="nav-item">
+                        <a class="nav-link" style="font-weight: bold; color: #f28367;" aria-current="page"
+                            href="casos.html" id="registro">Casos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="font-weight: bold; color: #f28367;" aria-current="page"
+                            href="consultas.html" id="asignaciones">Consultas</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="#" data-bs-toggle='modal' data-bs-target='#signupModal'
+                            style="font-weight: bold; color: #f28367; display: none;" aria-current="page">Crear
+                            usuario</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="entrar" data-bs-toggle='modal' data-bs-target='#signinModal'
+                            style="font-weight: bold; color: #f28367;" aria-current="page">Entrar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="logout" style="font-weight: bold; color: #f28367;"
+                            aria-current="page">Salir</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--card-->
+    <div class="container" id="editor">
+
+        <div class="card mt-5 mb-5"
+            style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+            <!--inicio card body 1-->
+            <div class="card-header">
+                <strong style="margin-left: 45%;">FORMATO</strong>
+                <hr>
+                <strong style="margin-left: 30%;">Quejas, reclamos, devoluciones y recogidas de producto</strong>
+
+
+                <input type="text"
+                    style="float: right;  margin-top: 15px; border: none; font-weight: bold; color: #00A651; display: inline-block; "
+                    disabled id="usuarioIni">
+
+            </div>
+            <div class="card-body">
+                <label for="" style="">Código:</label> <input
+                    style="min-width: 8%; max-width: 40px; border-style: none;" type="text" id="codigo"
+                    value="FO-SIG-08" disabled>
+
+                <label for="">Versión:</label> <input style="min-width: 8%; max-width: 30px; border-style: none;"
+                    type="text" id="version" value="08" disabled>
+
+                <label for="">Fecha:</label><input style="width: 11%; border-style: none;" type="date" id="fechaVer"
+                    value="2021-12-01" disabled>
+
+                <input type="button" value="Registrar" id="idregis" style="float: right; margin-left: 1%;"
+                    onclick="registrar()" class="btn btn-success">
+
+                <input
+                    style="float: right; border-style: none; width: 100px; text-align: center; font-weight: bold; color: rgb(252, 9, 9);"
+                    id="caso" type="number" value="1" disabled><label style="float: right; ">Caso
+                    N°:</label>
+
+                <input type="date" style="min-width: 10%; float: right; margin-right: 2%; " id="fech"
+                    placeholder="Fecha"><label style="float: right; margin-right: 0.5%; ">Fecha:</label>
+            </div>
+
+            <div class="card-header">
+                <strong style="margin-left: 30%;">1. Espacio diligenciado por quien recibe la queja o el
+                    reclamo</strong>
+            </div>
+            <input type="text" id="codLista" style="display: none;">
+            <div class="card-body">
+
+                <!---->
+
+                <div class="input-group ">
+
+                    <div class="form-floating mb-3 col-lg-2" style="">
+                        <input type="text" class="form-control" id="nit" placeholder="name@example.com"
+                            onchange="Nit(this.value)">
+                        <label for="nit">Nit cliente</label>
+                    </div>
+
+                    <div class="form-floating mb-3" style='margin-left: 1%;'>
+                        <input type="text" class="form-control" id="cliente" placeholder="name@example.com" disabled>
+                        <label for="cliente">Cliente</label>
+                    </div>
+
+                    <div class="form-floating mb-3" style="margin-left: 1%;">
+                        <input type="number" class="form-control" id="numero" placeholder="name@example.com">
+                        <label for="numero">Número contacto</label>
+                    </div>
+
+                    <div class="form-floating mb-3" style="margin-left: 1%;">
+                        <input type="text" style="" class="form-control" id="muestra2" placeholder="Seleccione su area"
+                            list="reposici2" onchange="depart(this.value)">
+                        <datalist id="reposici2">
+                            <option value="ANTIOQUIA">ANTIOQUIA</option>
+                            <option value="ATLANTICO">ATLANTICO</option>
+                            <option value="BOGOTA D.C.">BOGOTA D.C.</option>
+                            <option value="BOLIVAR">BOLIVAR</option>
+                            <option value="BOYACA">BOYACA</option>
+                            <option value="CALDAS">CALDAS</option>
+
+                            <option value="CAQUETÁ">CAQUETÁ</option>
+                            <option value="CAUCA">CAUCA</option>
+                            <option value="CESAR">CESAR</option>
+                            <option value="CÓRDOBA">CÓRDOBA</option>
+                            <option value="CUNDINAMARCA">CUNDINAMARCA</option>
+                            <option value="CHOCÓ">CHOCÓ</option>
+
+                            <option value="HUILA">HUILA</option>
+                            <option value="LA GUAJIRA">LA GUAJIRA</option>
+                            <option value="MAGDALENA">MAGDALENA</option>
+                            <option value="META">META</option>
+                            <option value="NARIÑO">NARIÑO</option>
+                            <option value="NORTE DE SANTANDER">NORTE DE SANTANDER</option>
+
+                            <option value="QUINDIO">QUINDIO</option>
+                            <option value="RISARALDA">RISARALDA</option>
+                            <option value="SANTANDER">SANTANDER</option>
+                            <option value="SUCRE">SUCRE</option>
+                            <option value="TOLIMA">TOLIMA</option>
+                            <option value="VALLE DEL CAUCA">VALLE DEL CAUCA</option>
+
+                            <option value="ARAUCA">ARAUCA</option>
+                            <option value="CASANARE">CASANARE</option>
+                            <option value="PUTUMAYO">PUTUMAYO</option>
+                            <option value="SAN ANDRÉS">SAN ANDRÉS</option>
+                            <option value="AMAZONAS">AMAZONAS</option>
+                            <option value="GUANÍA">GUANÍA</option>
+
+                            <option value="GUAVIARE">GUAVIARE</option>
+                            <option value="VAUPÉS">VAUPÉS</option>
+                            <option value="VICHADA">VICHADA</option>
+
+                        </datalist>
+                        <label for="floatingInput">Departamento</label>
+                    </div>
+
+
+
+
+
+                    <div style="margin-left: 1%;">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" style="" id="ubicacion" placeholder="Maquina"
+                                list="resul112">
+                            <!--onchange="Aseso(this.value)"-->
+                            <datalist id="resul112">
+
+
+                            </datalist>
+                            <label for="floatingInput">Municipios</label>
+                        </div>
+
+                    </div>
+
+                    <div class="form-floating mb-3" style="margin-left: 1%; width: 100px; ">
+                        <input type="text" class="form-control" id="muestra" placeholder="name@example.com"
+                            list="reposici">
+                        <datalist id="reposici">
+                            <option id="53c911ea609252c603qwq0632ddfe" value="Si">Si</option>
+                            <option id="53c911ea60925sdfs4e344asad4eg" value="No">No</option>
+
+                        </datalist>
+                        <label for="asesor">Muestra</label>
+                    </div>
+
+                    <div class="form-floating mb-3" style="margin-left: 1%; ">
+                        <input type="text" class="form-control"  id="asesor"
+                            placeholder="name@example.com" list="pruebalist2">
+                        <datalist id="pruebalist2">
+
+                            <option id="53c911ea609252c603qwq0632ddfe" value="JOSE WILLIAN HERRERA">JOSE WILLIAN HERRERA
+                            </option>
+                            <option id="53c911ea60925sdfs4e344asad4eg" value="ROSABELL CAQUIMBO MURCIA">ROSABELL
+                                CAQUIMBO MURCIA</option>
+                                <option id="53c911ea609252c603qwq0632ddfe" value="DIANA HERRERA">DIANA HERRERA</option>
+                            <option id="53c911ea60925sdfs4e344asad4eg" value="KAREN LORENA CALSETA">KAREN LORENA CALSETA
+                            </option>
+                            <option id="53c911ea609252c603qwq0632ddfe" value="AIDA MERCEDES MORENO">AIDA MERCEDES MORENO
+                            </option>
+                            <option id="53c911ea60925sdfs4e344asad4eg" value="MARIA ROMELIA ROMERO">MARIA ROMELIA ROMERO
+                            </option>
+                            <option id="53c911ea609252c603qwq0632ddfe" value="ANA YUBELI MARTINEZ">ANA YUBELI MARTINEZ
+                            </option>
+                            <option id="53c911ea60925sdfs4e344asad4eg" value="VIRGINIA NAVARRETE ">VIRGINIA NAVARRETE
+                            </option>
+                            <option id="53c911ea609252c603qwq0632ddfe" value="MARIA EUGENIA GARCIA">MARIA EUGENIA GARCIA
+                            </option>
+                            <option id="53c911ea60925sdfs4e344asad4eg" value="JOHANNA SANJUAN MURILLO ">JOHANNA SANJUAN
+                                MURILLO </option>
+
+                            <option id="53c911ea609252c603qwq0632ddfe" value="NINA ALEJANDRA ACUÑA">NINA ALEJANDRA ACUÑA
+                            </option>
+                            <option id="53c911ea60925sdfs4e344asad4eg" value="MELIZA EUGENIA VELEZ">MELIZA EUGENIA VELEZ
+                            </option>
+
+                            <option id="53c911ea609252c603qwq0632ddfe" value="LEIDY ARBOLEDA VALENCIA">LEIDY ARBOLEDA
+                                VALENCIA</option>
+                            <option id="53c911ea60925sdfs4e344asad4eg" value="EVELYN SERNA">EVELYN SERNA</option>
+                            <option id="53c911ea60925sdfs4e344asad4eg2" value="LINA MARCELA GALLEGO">LINA MARCELA
+                                GALLEGO</option>
+                            <option id="53c911ea60925sdfs4e344asad4e3g" value="DIANA CRISTINA OSORIO">DIANA CRISTINA
+                                OSORIO</option>
+                            <option id="53c911ea60925sdfs4e344asad4e3Sg" value="AMANDA TIRADO">AMANDA TIRADO</option>
+
+                            <option id="53c911ea60925sdfs4e344asDSad4e3Sg" value="PATRICIA MARTINEZ">PATRICIA MARTINEZ
+                            </option>
+                            <option id="53c911ea60925sdfs4e344asDSaadq4e3Sg" value="NORA DUQUE">NORA DUQUE</option>
+                            <option id="53c911ea60925sdfs4e344asDSaadq4e3Sg" value="MARLON GOMEZ RIBON">MARLON GOMEZ RIBON</option>
+                        </datalist>
+                        <label for="asesor">Asesor</label>
+                    </div>
+
+
+
+                    <div class="form-floating mb-3" style="margin-left: 1%; ">
+                        <input type="number" class="form-control" id="salida" placeholder="name@example.com">
+
+                        <label for="salida">N° Salida</label>
+                    </div>
+                    
+                    <div class="form-floating mb-3" style="margin-left: 1%; width: 9%; ">
+                        <input type="text" class="form-control" list="pruebalist212" id="tipopqrs"
+                        placeholder="name@example.com" >
+                    <datalist id="pruebalist212">
+
+                        <option id="53c911ea609252c603qwq0632addfe" value="Peticiones">Peticiones
+                        </option>
+                        <option id="53c911eas609252c603qwq0632addfe" value="Quejas">Quejas
+                        </option>
+                        <option id="53c911ea609252dc603qwq0632addfe" value="Reclamos">Reclamos
+                        </option>
+                        <option id="5d3c911ea609252c603qwq0632dadfe" value="Sugerencias">Sugerencias
+                        </option>
+                        
+                    </datalist>
+
+                        <label for="observacionesIni">Tipo</label>
+                    </div>
+
+                    <div class="form-floating mb-3" style="margin-left: 1%; width: 50%; ">
+                        <input type="text" class="form-control" id="observacionesIni" placeholder="name@example.com">
+
+                        <label for="observacionesIni">Observaciones</label>
+                    </div>
+
+
+
+
+                </div>
+
+                <!--inicio acordion-->
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Descripción
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+
+                                <!--tabla-->
+
+                                <table class="table">
+                                    <thead class="table"
+                                        style="background-color: #f28367; color: #fff; border-radius: 20px;">
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Referencia</th>
+                                            <th scope="col">Producto</th>
+                                            <th scope="col">Cantidad</th>
+                                            <th scope="col">Valor</th>
+                                            <th scope="col">Lote</th>
+                                            <th scope="col">N° factura</th>
+                                            <th scope="col">Motivo queja o reclamo</th>
+                                            <th scope="col">¿Reposicion del producto?</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td> <input type="text" class="form-control" id="ref1"
+                                                    onchange="Refe1(this.value)"> </td>
+                                            <td><textarea type="text" class="form-control" id="produ1"
+                                                    disabled></textarea> </td>
+                                            <td><input type="number" class="form-control" id="canti1"> </td>
+                                            <td><input type="number" class="form-control" id="valor1" disabled> </td>
+                                            <td><input type="text" class="form-control" id="lote1"> </td>
+                                            <td><input type="text" class="form-control" id="fact1"> </td>
+                                            <td><textarea type="text" class="form-control" id="motivo1"></textarea>
+                                            </td>
+                                            <td> <input type="text" name="reposicion" class='form-control mb-3'
+                                                    placeholder="" autocomplete="on" id="reposi1" list="reposici">
+                                                <datalist id="reposici">
+                                                    <option id="53c911ea609252c60qw1q0632dfe" value="Si">Si</option>
+                                                    <option id="53c911ea60925sdfs4e414asa4eg" value="No">No</option>
+
+                                                </datalist>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td> <input type="text" class="form-control" id="ref2"
+                                                    onchange="Refe2(this.value)"> </td>
+                                            <td><textarea type="text" class="form-control" id="produ2"
+                                                    disabled> </textarea></td>
+                                            <td><input type="number" class="form-control" id="canti2"> </td>
+                                            <td><input type="number" class="form-control" id="valor2" disabled> </td>
+                                            <td><input type="text" class="form-control" id="lote2"> </td>
+                                            <td><input type="text" class="form-control" id="fact2"> </td>
+                                            <td><textarea type="text" class="form-control" id="motivo2"> </textarea>
+                                            </td>
+                                            <td> <input type="text" name="reposicion" class='form-control mb-3'
+                                                    placeholder="" autocomplete="on" list="reposici" id="reposi2">
+                                                <datalist id="reposici">
+                                                    <option id="53c911ea609252c602qwq0632dfe" value="Si">Si</option>
+                                                    <option id="53c911ea60925sdfs24e44asa4eg" value="No">No</option>
+
+                                                </datalist>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td> <input type="text" class="form-control" id="ref3"
+                                                    onchange="Refe3(this.value)"> </td>
+                                            <td><textarea type="text" class="form-control" id="produ3"
+                                                    disabled> </textarea></td>
+                                            <td><input type="number" class="form-control" id="canti3"> </td>
+                                            <td><input type="number" class="form-control" id="valor3" disabled> </td>
+                                            <td><input type="text" class="form-control" id="lote3"> </td>
+                                            <td><input type="text" class="form-control" id="fact3"> </td>
+                                            <td><textarea type="text" class="form-control" id="motivo3"></textarea>
+                                            </td>
+                                            <td> <input type="text" name="reposicion" class='form-control mb-3'
+                                                    placeholder="" autocomplete="on" id="reposi3" list="reposici">
+                                                <datalist id="reposici">
+                                                    <option id="53c911ea609252c603qwq0632dfe" value="Si">Si</option>
+                                                    <option id="53c911ea60925sdfs4e344asa4eg" value="No">No</option>
+
+                                                </datalist>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <th scope="row">4</th>
+                                            <td> <input type="text" class="form-control" id="ref4"
+                                                    onchange="Refe4(this.value)"> </td>
+                                            <td><textarea type="text" class="form-control" id="produ4"
+                                                    disabled></textarea> </td>
+                                            <td><input type="number" class="form-control" id="canti4"> </td>
+                                            <td><input type="number" class="form-control" id="valor4" disabled> </td>
+                                            <td><input type="text" class="form-control" id="lote4"> </td>
+                                            <td><input type="text" class="form-control" id="fact4"> </td>
+                                            <td><textarea type="text" class="form-control" id="motivo4"> </textarea>
+                                            </td>
+                                            <td> <input type="text" name="reposicion" class='form-control mb-3'
+                                                    placeholder="" autocomplete="on" list="reposici" id="reposi4">
+                                                <datalist id="reposici">
+                                                    <option id="53c911ea609252c640qwq0632dfe" value="Si">Si</option>
+                                                    <option id="53c911ea60925sdfs44e44asa4eg" value="No">No</option>
+
+                                                </datalist>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">5</th>
+                                            <td> <input type="text" class="form-control" id="ref5"
+                                                    onchange="Refe5(this.value)"> </td>
+                                            <td><textarea type="text" class="form-control" id="produ5"
+                                                    disabled> </textarea></td>
+                                            <td><input type="number" class="form-control" id="canti5"> </td>
+                                            <td><input type="number" class="form-control" id="valor5" disabled> </td>
+                                            <td><input type="text" class="form-control" id="lote5"> </td>
+                                            <td><input type="text" class="form-control" id="fact5"> </td>
+                                            <td><textarea type="text" class="form-control" id="motivo5"> </textarea>
+                                            </td>
+                                            <td> <input type="text" name="reposicion" class='form-control mb-3'
+                                                    placeholder="" autocomplete="on" list="reposici" id="reposi5">
+                                                <datalist id="reposici">
+                                                    <option id="53c911ea6092525c60qwq0632dfe" value="Si">Si</option>
+                                                    <option id="53c911ea60925sd5fs4e44asa4eg" value="No">No</option>
+
+                                                </datalist>
+                                            </td>
+                                        </tr>
+                                        <tr style='display:none;'>
+                                            <th scope="row">6</th>
+                                            <td> <input type="text" class="form-control" id="ref6"> </td>
+                                            <td><input type="text" class="form-control" id="produ6"> </td>
+                                            <td><input type="number" class="form-control" id="canti6"> </td>
+                                            <td><input type="text" class="form-control" id="lote6"> </td>
+                                            <td><input type="text" class="form-control" id="fact6"> </td>
+                                            <td><input type="text" class="form-control" id="motivo6"> </td>
+                                            <td> <input type="text" name="reposicion" class='form-control mb-3'
+                                                    placeholder="" autocomplete="on" list="reposici" id="reposi6">
+                                                <datalist id="reposici">
+                                                    <option id="53c911ea6092562c60qwq0632dfe" value="Si">Si</option>
+                                                    <option id="53c911ea60925s6dfs4e44asa4eg" value="No">No</option>
+
+                                                </datalist>
+                                            </td>
+                                        </tr>
+
+                                        <tr style='display:none;'>
+                                            <th scope="row">7</th>
+                                            <td> <input type="text" class="form-control" id="ref7"> </td>
+                                            <td><input type="text" class="form-control" id="produ7"> </td>
+                                            <td><input type="number" class="form-control" id="canti7"> </td>
+                                            <td><input type="text" class="form-control" id="lote7"> </td>
+                                            <td><input type="text" class="form-control" id="fact7"> </td>
+                                            <td><input type="text" class="form-control" id="motivo7"> </td>
+                                            <td> <input type="text" name="reposicion" class='form-control mb-3'
+                                                    placeholder="" autocomplete="on" list="reposici" id="reposi7">
+                                                <datalist id="reposici">
+                                                    <option id="53c911ea609252c607qwq0632dfe" value="Si">Si</option>
+                                                    <option id="53c911ea60925sdfs74e44asa4eg" value="No">No</option>
+
+                                                </datalist>
+                                            </td>
+                                        </tr>
+                                        <tr style='display:none;'>
+                                            <th scope="row">8</th>
+                                            <td> <input type="text" class="form-control" id="ref8"> </td>
+                                            <td><input type="text" class="form-control" id="produ8"> </td>
+                                            <td><input type="number" class="form-control" id="canti8"> </td>
+                                            <td><input type="text" class="form-control" id="lote8"> </td>
+                                            <td><input type="text" class="form-control" id="fact8"> </td>
+                                            <td><input type="text" class="form-control" id="motivo8"> </td>
+                                            <td> <input type="text" name="reposicion" class='form-control mb-3'
+                                                    placeholder="" autocomplete="on" list="reposici" id="reposi8">
+                                                <datalist id="reposici">
+                                                    <option id="53c911ea609252c680qwq0632dfe" value="Si">Si</option>
+                                                    <option id="53c911ea60925sdfs84e44asa4eg" value="No">No</option>
+
+                                                </datalist>
+                                            </td>
+                                        </tr>
+                                        <tr style='display:none;'>
+                                            <th scope="row">9</th>
+                                            <td> <input type="text" class="form-control" id="ref9"> </td>
+                                            <td><input type="text" class="form-control" id="produ9"> </td>
+                                            <td><input type="number" class="form-control" id="canti9"> </td>
+                                            <td><input type="text" class="form-control" id="lote9"> </td>
+                                            <td><input type="text" class="form-control" id="fact9"> </td>
+                                            <td><input type="text" class="form-control" id="motivo9"> </td>
+                                            <td> <input type="text" name="reposicion" class='form-control mb-3'
+                                                    placeholder="" autocomplete="on" list="reposici" id="reposi9">
+                                                <datalist id="reposici">
+                                                    <option id="53c911ea6099252c60qwq0632dfe" value="Si">Si</option>
+                                                    <option id="53c911ea609259sdfs4e44asa4eg" value="No">No</option>
+
+                                                </datalist>
+                                            </td>
+                                        </tr>
+
+                                        <tr style='display:none;'>
+                                            <th scope="row">10</th>
+                                            <td> <input type="text" class="form-control" id="ref10"> </td>
+                                            <td><input type="text" class="form-control" id="produ10"> </td>
+                                            <td><input type="number" class="form-control" id="canti10"> </td>
+                                            <td><input type="text" class="form-control" id="lote10"> </td>
+                                            <td><input type="text" class="form-control" id="fact10"> </td>
+                                            <td><input type="text" class="form-control" id="motivo10"> </td>
+                                            <td> <input type="text" name="reposicion" class='form-control mb-3'
+                                                    placeholder="" autocomplete="on" list="reposici" id="reposi10">
+                                                <datalist id="reposici">
+                                                    <option id="53c911ea60910252c60qwq0632dfe" value="Si">Si</option>
+                                                    <option id="53c911ea60925sd10fs4e44asa4eg" value="No">No</option>
+
+                                                </datalist>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+                                <!--fin tabla-->
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+
+                <!--fin acordion-->
+
+
+
+
+            </div>
+          
+
+            <div class="row" style="margin-left: 35%;">
+                <div class="col-xs-12 col-md-6">
+                    <div class="form-group">
+
+                        <div class="input-group">
+                            <input class="form-control form-control-sm" name='fichero' id="fichero" type="file" value="Vacio"
+                             name="Vacio"> <input type="button" class="btn btn-success" style="margin-left: 1%;" value="Adjuntar" onclick="subirImg()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="" id="link1" style="margin-left: 2%;"><img src="camara.png" style="width: 3%; height: 3%;" id="link1"></a>
+            
+            <!--fin card body 1-->
+
+            <div class="card-header m">
+                <strong style="margin-left: 30%;">2. Espacio diligenciado por el area control calidad</strong>
+                <br>
+                <label for="" style="margin-left: 31%;">Resultado de la revisión de la queja o el reclamo </label>
+
+
+
+            </div>
+
+            <!--card body 3-->
+            <div class="card-body" id="cuerpo2">
+
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne2" aria-expanded="true" aria-controls="collapseOne">
+                                Descripción
+                            </button>
+                        </h2>
+                        <div id="collapseOne2" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+
+                                <input type="button" value="Consultar" id="idconsul" onclick="consultar()"
+                                    class="btn btn-primary" style="float: right; margin-bottom: 10px;">
+
+                                <input type="button" value="Actualizar" id="idactu" onclick="actualizar()"
+                                    class="btn btn-secondary"
+                                    style="float: right; margin-right: 1%; margin-bottom: 10px;">
+                                <input type="text" placeholder="#Reg" id="consulReg"
+                                    style="width: 65px; float: right; margin-right: 1%; border-width: 3px; border-style: ridge; margin-bottom: 10px; "
+                                    class="form-control">
+
+                                <table class="table">
+                                    <thead class="table"
+                                        style="background-color: #f28367; color: #fff; border-radius: 20px;">
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Referencia</th>
+                                            <th scope="col">Resultados de la revisión inicial</th>
+                                            <th scope="col">Motivo</th>
+                                            <th scope="col">Nota crédito</th>
+                                            <th scope="col">Reintegro</th>
+                                            <th scope="col">Reproceso</th>
+                                            <th scope="col">Destrucción</th>
+
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1 </th>
+                                            <td> <input type="text" class="form-control text-center"
+                                                    style="font-weight: bold;" id="refc1" disabled> </td>
+                                            <td><textarea type="text" class="form-control" id="error1"></textarea>
+                                            </td>
+                                            <td><input type="text" class="form-control text-center" id="motivoSeg1"
+                                                    style="font-weight: bold;" list="resul">
+                                                <datalist id="resul">
+                                                    <option id="53c911ea609252resulc60qw1q0632dfe"
+                                                        value="Manejo inadecuado cliente">Manejo inadecuado cliente
+                                                    </option>
+                                                    <option id="53c911ea60925sresuldfs4e414asa4eg"
+                                                        value="Error en facturación">Error en facturación</option>
+
+                                                    <option id="53c911ea60925resul2c60qw1q0632dfe"
+                                                        value="Error etiqueta">Error etiqueta</option>
+                                                    <option id="53c911ea60925resulsdfs4e414asa4eg" value="Error sello">
+                                                        Error sello</option>
+
+                                                    <option id="53c911ea609252resulc60qw1q0632dfe"
+                                                        value="Error codigo de barra">Error codigo de barra</option>
+                                                    <option id="53c911ea60925resulsdfs4e414asa4eg"
+                                                        value="Error termoencogible">Error termoencogible</option>
+
+                                                    <option id="53c911ea60925resul2c60qw1q0632dfe"
+                                                        value="Error numero de lote">Error numero de lote</option>
+                                                    <option id="53c911ea60925resulsdfs4e414asa4eg" value="Error envase">
+                                                        Error envase</option>
+
+                                                    <option id="53c911ea6092resul52c60qw1q0632dfe"
+                                                        value="Error tapa y/o envase">Error tapa y/o envase</option>
+                                                    <option id="53c911ea6092resul5sdfs4e414asa4eg"
+                                                        value="Error de producción">Error de producción</option>
+
+                                                    <option id="53c911ea6092resul52c60qw1q0632dfe"
+                                                        value="Condiciones comerciales">Condiciones comerciales</option>
+                                                    <option id="53c911ea6092resul5sdfs4e414asa4eg"
+                                                        value="Atención al cliente">Atención al cliente</option>
+
+                                                    <option id="53c911ea60resul9252c60qw1q0632dfe" value="Transporte">
+                                                        Transporte</option>
+                                                    <option id="53c911ea60resul925sdfs4e414asa4eg"
+                                                        value="Error en el despacho">Error en el despacho</option>
+
+                                                    <option id="53c911ea609resul252c60qw1q0632dfe"
+                                                        value="Error de vendedor">Error de vendedor</option>
+                                                    <option id="53c911ea609resul25sdfs4e414asa4eg"
+                                                        value="Rotacion de los productos">Rotacion de los productos
+                                                    </option>
+                                                    <option id="53c911ea609resul25sdfs4e414asa4eg"
+                                                        value="Mayor valor en la factura">Mayor valor en la factura
+                                                    </option>
+
+
+
+                                                </datalist>
+                                            </td>
+                                            <td><input type="number" class="form-control text-center" id="credito1"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="reintegro1"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="reproceso1"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="destruccion1"
+                                                    style="font-weight: bold;"> </td>
+
+
+
+
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td> <input type="text" class="form-control text-center"
+                                                    style="font-weight: bold;" id="refc2" disabled> </td>
+                                            <td><textarea type="text" class="form-control" id="error2"></textarea>
+                                            </td>
+                                            <td><input type="text" class="form-control text-center" id="motivoSeg2"
+                                                    style="font-weight: bold;" list="resul2">
+                                                <datalist id="resul2">
+                                                    <option id="53c911ea609252resulc60qw1q0632dfe"
+                                                        value="Manejo inadecuado cliente">Manejo inadecuado cliente
+                                                    </option>
+                                                    <option id="53c911ea60925sresuldfs4e414asa4eg"
+                                                        value="Error en facturación">Error en facturación</option>
+
+                                                    <option id="53c911ea60925resul2c60qw1q0632dfe"
+                                                        value="Error etiqueta">Error etiqueta</option>
+                                                    <option id="53c911ea60925resulsdfs4e414asa4eg" value="Error sello">
+                                                        Error sello</option>
+
+                                                    <option id="53c911ea609252resulc60qw1q0632dfe"
+                                                        value="Error codigo de barra">Error codigo de barra</option>
+                                                    <option id="53c911ea60925resulsdfs4e414asa4eg"
+                                                        value="Error termoencogible">Error termoencogible</option>
+
+                                                    <option id="53c911ea60925resul2c60qw1q0632dfe"
+                                                        value="Error numero de lote">Error numero de lote</option>
+                                                    <option id="53c911ea60925resulsdfs4e414asa4eg" value="Error envase">
+                                                        Error envase</option>
+
+                                                    <option id="53c911ea6092resul52c60qw1q0632dfe"
+                                                        value="Error tapa y/o envase">Error tapa y/o envase</option>
+                                                    <option id="53c911ea6092resul5sdfs4e414asa4eg"
+                                                        value="Error de producción">Error de producción</option>
+
+                                                    <option id="53c911ea6092resul52c60qw1q0632dfe"
+                                                        value="Condiciones comerciales">Condiciones comerciales</option>
+                                                    <option id="53c911ea6092resul5sdfs4e414asa4eg"
+                                                        value="Atención al cliente">Atención al cliente</option>
+
+                                                    <option id="53c911ea60resul9252c60qw1q0632dfe" value="Transporte">
+                                                        Transporte</option>
+                                                    <option id="53c911ea60resul925sdfs4e414asa4eg"
+                                                        value="Error en el despacho">Error en el despacho</option>
+
+                                                    <option id="53c911ea609resul252c60qw1q0632dfe"
+                                                        value="Error de vendedor">Error de vendedor</option>
+                                                    <option id="53c911ea609resul25sdfs4e414asa4eg"
+                                                        value="Rotacion de los productos">Rotacion de los productos
+                                                    </option>
+                                                    <option id="53c911ea609resul25sdfs4e414asa4eg"
+                                                        value="Mayor valor en la factura">Mayor valor en la factura
+                                                    </option>
+
+
+
+                                                </datalist>
+                                            </td>
+                                            <td><input type="number" class="form-control text-center" id="credito2"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="reintegro2"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="reproceso2"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="destruccion2"
+                                                    style="font-weight: bold;"> </td>
+
+
+
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td> <input type="text" class="form-control text-center"
+                                                    style="font-weight: bold;" id="refc3" disabled> </td>
+                                            <td><textarea type="text" class="form-control" id="error3"></textarea>
+                                            </td>
+
+                                            <td><input type="text" class="form-control text-center" id="motivoSeg3"
+                                                    style="font-weight: bold;" list="resul3">
+                                                <datalist id="resul3">
+                                                    <option id="53c911ea609252resulc60qw1q0632dfe"
+                                                        value="Manejo inadecuado cliente">Manejo inadecuado cliente
+                                                    </option>
+                                                    <option id="53c911ea60925sresuldfs4e414asa4eg"
+                                                        value="Error en facturación">Error en facturación</option>
+
+                                                    <option id="53c911ea60925resul2c60qw1q0632dfe"
+                                                        value="Error etiqueta">Error etiqueta</option>
+                                                    <option id="53c911ea60925resulsdfs4e414asa4eg" value="Error sello">
+                                                        Error sello</option>
+
+                                                    <option id="53c911ea609252resulc60qw1q0632dfe"
+                                                        value="Error codigo de barra">Error codigo de barra</option>
+                                                    <option id="53c911ea60925resulsdfs4e414asa4eg"
+                                                        value="Error termoencogible">Error termoencogible</option>
+
+                                                    <option id="53c911ea60925resul2c60qw1q0632dfe"
+                                                        value="Error numero de lote">Error numero de lote</option>
+                                                    <option id="53c911ea60925resulsdfs4e414asa4eg" value="Error envase">
+                                                        Error envase</option>
+
+                                                    <option id="53c911ea6092resul52c60qw1q0632dfe"
+                                                        value="Error tapa y/o envase">Error tapa y/o envase</option>
+                                                    <option id="53c911ea6092resul5sdfs4e414asa4eg"
+                                                        value="Error de producción">Error de producción</option>
+
+                                                    <option id="53c911ea6092resul52c60qw1q0632dfe"
+                                                        value="Condiciones comerciales">Condiciones comerciales</option>
+                                                    <option id="53c911ea6092resul5sdfs4e414asa4eg"
+                                                        value="Atención al cliente">Atención al cliente</option>
+
+                                                    <option id="53c911ea60resul9252c60qw1q0632dfe" value="Transporte">
+                                                        Transporte</option>
+                                                    <option id="53c911ea60resul925sdfs4e414asa4eg"
+                                                        value="Error en el despacho">Error en el despacho</option>
+
+                                                    <option id="53c911ea609resul252c60qw1q0632dfe"
+                                                        value="Error de vendedor">Error de vendedor</option>
+                                                    <option id="53c911ea609resul25sdfs4e414asa4eg"
+                                                        value="Rotacion de los productos">Rotacion de los productos
+                                                    </option>
+                                                    <option id="53c911ea609resul25sdfs4e414asa4eg"
+                                                        value="Mayor valor en la factura">Mayor valor en la factura
+                                                    </option>
+
+
+
+                                                </datalist>
+                                            </td>
+                                            <td><input type="number" class="form-control text-center" id="credito3"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="reintegro3"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="reproceso3"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="destruccion3"
+                                                    style="font-weight: bold;"> </td>
+
+
+                                        </tr>
+
+                                        <tr>
+                                            <th scope="row">4</th>
+                                            <td> <input type="text" class="form-control text-center"
+                                                    style="font-weight: bold;" id="refc4" disabled> </td>
+                                            <td><textarea type="text" class="form-control" id="error4"></textarea>
+                                            </td>
+                                            <td><input type="text" class="form-control text-center" id="motivoSeg4"
+                                                    style="font-weight: bold;" list="resul4">
+                                                <datalist id="resul4">
+                                                    <option id="53c911ea609252resulc60qw1q0632dfe"
+                                                        value="Manejo inadecuado cliente">Manejo inadecuado cliente
+                                                    </option>
+                                                    <option id="53c911ea60925sresuldfs4e414asa4eg"
+                                                        value="Error en facturación">Error en facturación</option>
+
+                                                    <option id="53c911ea60925resul2c60qw1q0632dfe"
+                                                        value="Error etiqueta">Error etiqueta</option>
+                                                    <option id="53c911ea60925resulsdfs4e414asa4eg" value="Error sello">
+                                                        Error sello</option>
+
+                                                    <option id="53c911ea609252resulc60qw1q0632dfe"
+                                                        value="Error codigo de barra">Error codigo de barra</option>
+                                                    <option id="53c911ea60925resulsdfs4e414asa4eg"
+                                                        value="Error termoencogible">Error termoencogible</option>
+
+                                                    <option id="53c911ea60925resul2c60qw1q0632dfe"
+                                                        value="Error numero de lote">Error numero de lote</option>
+                                                    <option id="53c911ea60925resulsdfs4e414asa4eg" value="Error envase">
+                                                        Error envase</option>
+
+                                                    <option id="53c911ea6092resul52c60qw1q0632dfe"
+                                                        value="Error tapa y/o envase">Error tapa y/o envase</option>
+                                                    <option id="53c911ea6092resul5sdfs4e414asa4eg"
+                                                        value="Error de producción">Error de producción</option>
+
+                                                    <option id="53c911ea6092resul52c60qw1q0632dfe"
+                                                        value="Condiciones comerciales">Condiciones comerciales</option>
+                                                    <option id="53c911ea6092resul5sdfs4e414asa4eg"
+                                                        value="Atención al cliente">Atención al cliente</option>
+
+                                                    <option id="53c911ea60resul9252c60qw1q0632dfe" value="Transporte">
+                                                        Transporte</option>
+                                                    <option id="53c911ea60resul925sdfs4e414asa4eg"
+                                                        value="Error en el despacho">Error en el despacho</option>
+
+                                                    <option id="53c911ea609resul252c60qw1q0632dfe"
+                                                        value="Error de vendedor">Error de vendedor</option>
+                                                    <option id="53c911ea609resul25sdfs4e414asa4eg"
+                                                        value="Rotacion de los productos">Rotacion de los productos
+                                                    </option>
+                                                    <option id="53c911ea609resul25sdfs4e414asa4eg"
+                                                        value="Mayor valor en la factura">Mayor valor en la factura
+                                                    </option>
+
+
+
+                                                </datalist>
+                                            </td>
+                                            <td><input type="number" class="form-control text-center" id="credito4"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="reintegro4"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="reproceso4"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="destruccion4"
+                                                    style="font-weight: bold;"> </td>
+
+
+
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">5</th>
+                                            <td> <input type="text" class="form-control text-center"
+                                                    style="font-weight: bold;" id="refc5" disabled> </td>
+                                            <td><textarea type="text" class="form-control" id="error5"></textarea>
+                                            </td>
+                                            <td><input type="text" class="form-control text-center" id="motivoSeg5"
+                                                    style="font-weight: bold;" list="resul5">
+                                                <datalist id="resul5">
+                                                    <option id="53c911ea609252resulc60qw1q0632dfe"
+                                                        value="Manejo inadecuado cliente">Manejo inadecuado cliente
+                                                    </option>
+                                                    <option id="53c911ea60925sresuldfs4e414asa4eg"
+                                                        value="Error en facturación">Error en facturación</option>
+
+                                                    <option id="53c911ea60925resul2c60qw1q0632dfe"
+                                                        value="Error etiqueta">Error etiqueta</option>
+                                                    <option id="53c911ea60925resulsdfs4e414asa4eg" value="Error sello">
+                                                        Error sello</option>
+
+                                                    <option id="53c911ea609252resulc60qw1q0632dfe"
+                                                        value="Error codigo de barra">Error codigo de barra</option>
+                                                    <option id="53c911ea60925resulsdfs4e414asa4eg"
+                                                        value="Error termoencogible">Error termoencogible</option>
+
+                                                    <option id="53c911ea60925resul2c60qw1q0632dfe"
+                                                        value="Error numero de lote">Error numero de lote</option>
+                                                    <option id="53c911ea60925resulsdfs4e414asa4eg" value="Error envase">
+                                                        Error envase</option>
+
+                                                    <option id="53c911ea6092resul52c60qw1q0632dfe"
+                                                        value="Error tapa y/o envase">Error tapa y/o envase</option>
+                                                    <option id="53c911ea6092resul5sdfs4e414asa4eg"
+                                                        value="Error de producción">Error de producción</option>
+
+                                                    <option id="53c911ea6092resul52c60qw1q0632dfe"
+                                                        value="Condiciones comerciales">Condiciones comerciales</option>
+                                                    <option id="53c911ea6092resul5sdfs4e414asa4eg"
+                                                        value="Atención al cliente">Atención al cliente</option>
+
+                                                    <option id="53c911ea60resul9252c60qw1q0632dfe" value="Transporte">
+                                                        Transporte</option>
+                                                    <option id="53c911ea60resul925sdfs4e414asa4eg"
+                                                        value="Error en el despacho">Error en el despacho</option>
+
+                                                    <option id="53c911ea609resul252c60qw1q0632dfe"
+                                                        value="Error de vendedor">Error de vendedor</option>
+                                                    <option id="53c911ea609resul25sdfs4e414asa4eg"
+                                                        value="Rotacion de los productos">Rotacion de los productos
+                                                    </option>
+                                                    <option id="53c911ea609resul25sdfs4e414asa4eg"
+                                                        value="Mayor valor en la factura">Mayor valor en la factura
+                                                    </option>
+
+
+
+                                                </datalist>
+                                            </td>
+                                            <td><input type="number" class="form-control text-center" id="credito5"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="reintegro5"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="reproceso5"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="destruccion5"
+                                                    style="font-weight: bold;"> </td>
+
+
+
+
+                                        </tr>
+                                        <tr style='display:none;'>
+                                            <th scope="row">6</th>
+                                            <td> <input type="text" class="form-control text-center"
+                                                    style="font-weight: bold;" id="refc6" disabled> </td>
+                                            <td><input type="text" class="form-control" id="error6" list="resul6">
+                                                <datalist id="resul6">
+                                                    <option id="53c911ea6096252resulc60qw1q0632dfe"
+                                                        value="Manejo inadecuado cliente">Manejo inadecuado cliente
+                                                    </option>
+                                                    <option id="53c911ea609265sresuldfs4e414asa4eg"
+                                                        value="Error en facturación">Error en facturación</option>
+
+                                                    <option id="53c911ea609625resul2c60qw1q0632dfe"
+                                                        value="Error etiqueta">Error etiqueta</option>
+                                                    <option id="53c911ea609265resulsdfs4e414asa4eg" value="Error sello">
+                                                        Error sello</option>
+
+                                                    <option id="53c911ea6092652resulc60qw1q0632dfe"
+                                                        value="Error codigo de barra">Error codigo de barra</option>
+                                                    <option id="53c911ea609265resulsdfs4e414asa4eg"
+                                                        value="Error termoencogible">Error termoencogible</option>
+
+                                                    <option id="53c911ea609256resul2c60qw1q0632dfe"
+                                                        value="Error numero de lote">Error numero de lote</option>
+                                                    <option id="53c911ea609265resulsdfs4e414asa4eg"
+                                                        value="Error envase">
+                                                        Error envase</option>
+
+                                                    <option id="53c911ea60962resul52c60qw1q0632dfe"
+                                                        value="Error tapa y/o envase">Error tapa y/o envase</option>
+                                                    <option id="53c911ea60962resul5sdfs4e414asa4eg"
+                                                        value="Error de producción">Error de producción</option>
+
+                                                    <option id="53c911ea60926resul52c60qw1q0632dfe"
+                                                        value="Condiciones comerciales">Condiciones comerciales</option>
+                                                    <option id="53c911ea60962resul5sdfs4e414asa4eg"
+                                                        value="Atención al cliente">Atención al cliente</option>
+
+                                                    <option id="53c911ea60res6ul9252c60qw1q0632dfe" value="Transporte">
+                                                        Transporte</option>
+                                                    <option id="53c911ea60res6ul925sdfs4e414asa4eg"
+                                                        value="Error en el despacho">Error en el despacho</option>
+
+                                                    <option id="53c911ea609re6sul252c60qw1q0632dfe"
+                                                        value="Error de vendedor">Error de vendedor</option>
+                                                    <option id="53c911ea609r6esul25sdfs4e414asa4eg"
+                                                        value="Rotacion de los productos">Rotacion de los productos
+                                                    </option>
+                                                    <option id="53c911ea6096resul25sdfs4e414asa4eg"
+                                                        value="Mayor valor en la factura">Mayor valor en la factura
+                                                    </option>
+
+
+
+                                                </datalist>
+                                            </td>
+                                            <td><input type="number" class="form-control text-center" id="credito6"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="reintegro6"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="reproceso6"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="destruccion6"
+                                                    style="font-weight: bold;"> </td>
+
+
+                                        </tr>
+
+                                        <tr style='display:none;'>
+                                            <th scope="row">7</th>
+                                            <td> <input type="text" class="form-control text-center"
+                                                    style="font-weight: bold;" id="refc7" disabled> </td>
+                                            <td><input type="text" class="form-control" id="error7" list="resul7">
+                                                <datalist id="resul7">
+                                                    <option id="53c911ea6092752resulc60qw1q0632dfe"
+                                                        value="Manejo inadecuado cliente">Manejo inadecuado cliente
+                                                    </option>
+                                                    <option id="53c911ea609725sresuldfs4e414asa4eg"
+                                                        value="Error en facturación">Error en facturación</option>
+
+                                                    <option id="53c911ea609725resul2c60qw1q0632dfe"
+                                                        value="Error etiqueta">Error etiqueta</option>
+                                                    <option id="53c911ea609725resulsdfs4e414asa4eg" value="Error sello">
+                                                        Error sello</option>
+
+                                                    <option id="53c911ea6092752resulc60qw1q0632dfe"
+                                                        value="Error codigo de barra">Error codigo de barra</option>
+                                                    <option id="53c911ea609275resulsdfs4e414asa4eg"
+                                                        value="Error termoencogible">Error termoencogible</option>
+
+                                                    <option id="53c911ea609725resul2c60qw1q0632dfe"
+                                                        value="Error numero de lote">Error numero de lote</option>
+                                                    <option id="53c911ea609725resulsdfs4e414asa4eg"
+                                                        value="Error envase">
+                                                        Error envase</option>
+
+                                                    <option id="53c911ea60927resul52c60qw1q0632dfe"
+                                                        value="Error tapa y/o envase">Error tapa y/o envase</option>
+                                                    <option id="53c911ea60927resul5sdfs4e414asa4eg"
+                                                        value="Error de producción">Error de producción</option>
+
+                                                    <option id="53c911ea60927resul52c60qw1q0632dfe"
+                                                        value="Condiciones comerciales">Condiciones comerciales</option>
+                                                    <option id="53c911ea60927resul5sdfs4e414asa4eg"
+                                                        value="Atención al cliente">Atención al cliente</option>
+
+                                                    <option id="53c911ea60r7esul9252c60qw1q0632dfe" value="Transporte">
+                                                        Transporte</option>
+                                                    <option id="53c911ea60re7sul925sdfs4e414asa4eg"
+                                                        value="Error en el despacho">Error en el despacho</option>
+
+                                                    <option id="53c911ea609r7esul252c60qw1q0632dfe"
+                                                        value="Error de vendedor">Error de vendedor</option>
+                                                    <option id="53c911ea609r7esul25sdfs4e414asa4eg"
+                                                        value="Rotacion de los productos">Rotacion de los productos
+                                                    </option>
+                                                    <option id="53c911ea609res7ul25sdfs4e414asa4eg"
+                                                        value="Mayor valor en la factura">Mayor valor en la factura
+                                                    </option>
+
+
+
+                                                </datalist>
+                                            </td>
+                                            <td><input type="number" class="form-control text-center" id="credito7"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="reintegro7"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="reproceso7"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="destruccion7"
+                                                    style="font-weight: bold;"> </td>
+
+
+                                        </tr>
+                                        <tr style='display:none;'>
+                                            <th scope="row">8</th>
+                                            <td> <input type="text" class="form-control text-center"
+                                                    style="font-weight: bold;" id="refc8" disabled> </td>
+                                            <td><input type="text" class="form-control" id="error8" list="resul8">
+                                                <datalist id="resul8">
+                                                    <option id="53c911ea6092852resulc60qw1q0632dfe"
+                                                        value="Manejo inadecuado cliente">Manejo inadecuado cliente
+                                                    </option>
+                                                    <option id="53c911ea609285sresuldfs4e414asa4eg"
+                                                        value="Error en facturación">Error en facturación</option>
+
+                                                    <option id="53c911ea609285resul2c60qw1q0632dfe"
+                                                        value="Error etiqueta">Error etiqueta</option>
+                                                    <option id="53c911ea60925r8esulsdfs4e414asa4eg" value="Error sello">
+                                                        Error sello</option>
+
+                                                    <option id="53c911ea6092582resulc60qw1q0632dfe"
+                                                        value="Error codigo de barra">Error codigo de barra</option>
+                                                    <option id="53c911ea60925r8esulsdfs4e414asa4eg"
+                                                        value="Error termoencogible">Error termoencogible</option>
+
+                                                    <option id="53c911ea609258resul2c60qw1q0632dfe"
+                                                        value="Error numero de lote">Error numero de lote</option>
+                                                    <option id="53c911ea609258resulsdfs4e414asa4eg"
+                                                        value="Error envase">
+                                                        Error envase</option>
+
+                                                    <option id="53c911ea60928resul52c60qw1q0632dfe"
+                                                        value="Error tapa y/o envase">Error tapa y/o envase</option>
+                                                    <option id="53c911ea60928resul5sdfs4e414asa4eg"
+                                                        value="Error de producción">Error de producción</option>
+
+                                                    <option id="53c911ea60928resul52c60qw1q0632dfe"
+                                                        value="Condiciones comerciales">Condiciones comerciales</option>
+                                                    <option id="53c911ea60982resul5sdfs4e414asa4eg"
+                                                        value="Atención al cliente">Atención al cliente</option>
+
+                                                    <option id="53c911ea60r8esul9252c60qw1q0632dfe" value="Transporte">
+                                                        Transporte</option>
+                                                    <option id="53c911ea608resul925sdfs4e414asa4eg"
+                                                        value="Error en el despacho">Error en el despacho</option>
+
+                                                    <option id="53c911ea608resul252c60qw1q0632dfe"
+                                                        value="Error de vendedor">Error de vendedor</option>
+                                                    <option id="53c911ea6089resul25sdfs4e414asa4eg"
+                                                        value="Rotacion de los productos">Rotacion de los productos
+                                                    </option>
+                                                    <option id="53c911ea6089resul25sdfs4e414asa4eg"
+                                                        value="Mayor valor en la factura">Mayor valor en la factura
+                                                    </option>
+
+
+
+                                                </datalist>
+                                            </td>
+                                            <td><input type="number" class="form-control text-center" id="credito8"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="reintegro8"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="reproceso8"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="destruccion8"
+                                                    style="font-weight: bold;"> </td>
+
+
+                                        </tr>
+                                        <tr style='display:none;'>
+                                            <th scope="row">9</th>
+                                            <td> <input type="text" class="form-control text-center"
+                                                    style="font-weight: bold;" id="refc9" disabled> </td>
+                                            <td><input type="text" class="form-control" id="error9" list="resul9">
+                                                <datalist id="resul9">
+                                                    <option id="53c911ea6092952resulc60qw1q0632dfe"
+                                                        value="Manejo inadecuado cliente">Manejo inadecuado cliente
+                                                    </option>
+                                                    <option id="53c911ea609925sresuldfs4e414asa4eg"
+                                                        value="Error en facturación">Error en facturación</option>
+
+                                                    <option id="53c911ea609295resul2c60qw1q0632dfe"
+                                                        value="Error etiqueta">Error etiqueta</option>
+                                                    <option id="53c911ea609295resulsdfs4e414asa4eg" value="Error sello">
+                                                        Error sello</option>
+
+                                                    <option id="53c911ea6092592resulc60qw1q0632dfe"
+                                                        value="Error codigo de barra">Error codigo de barra</option>
+                                                    <option id="53c911ea609259resulsdfs4e414asa4eg"
+                                                        value="Error termoencogible">Error termoencogible</option>
+
+                                                    <option id="53c911ea60925re9sul2c60qw1q0632dfe"
+                                                        value="Error numero de lote">Error numero de lote</option>
+                                                    <option id="53c911ea609259resulsdfs4e414asa4eg"
+                                                        value="Error envase">
+                                                        Error envase</option>
+
+                                                    <option id="53c911ea6092r9esul52c60qw1q0632dfe"
+                                                        value="Error tapa y/o envase">Error tapa y/o envase</option>
+                                                    <option id="53c911ea6092r9esul5sdfs4e414asa4eg"
+                                                        value="Error de producción">Error de producción</option>
+
+                                                    <option id="53c911ea6092re9sul52c60qw1q0632dfe"
+                                                        value="Condiciones comerciales">Condiciones comerciales</option>
+                                                    <option id="53c911ea6092re9sul5sdfs4e414asa4eg"
+                                                        value="Atención al cliente">Atención al cliente</option>
+
+                                                    <option id="53c911ea60resu9l9252c60qw1q0632dfe" value="Transporte">
+                                                        Transporte</option>
+                                                    <option id="53c911ea60resu9l925sdfs4e414asa4eg"
+                                                        value="Error en el despacho">Error en el despacho</option>
+
+                                                    <option id="53c911ea609res9ul252c60qw1q0632dfe"
+                                                        value="Error de vendedor">Error de vendedor</option>
+                                                    <option id="53c911ea609res9ul25sdfs4e414asa4eg"
+                                                        value="Rotacion de los productos">Rotacion de los productos
+                                                    </option>
+                                                    <option id="53c911ea609res9ul25sdfs4e414asa4eg"
+                                                        value="Mayor valor en la factura">Mayor valor en la factura
+                                                    </option>
+
+
+
+                                                </datalist>
+                                            </td>
+                                            <td><input type="number" class="form-control text-center" id="credito9"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="reintegro9"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="reproceso9"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="destruccion9"
+                                                    style="font-weight: bold;"> </td>
+
+                                        </tr>
+
+                                        <tr style='display:none;'>
+                                            <th scope="row">10</th>
+                                            <td> <input type="text" class="form-control text-center"
+                                                    style="font-weight: bold;" id="refc10" disabled> </td>
+                                            <td><input type="text" class="form-control" id="error10" list="resul10">
+                                                <datalist id="resul10">
+                                                    <option id="53c911ea60925102resulc60qw1q0632dfe"
+                                                        value="Manejo inadecuado cliente">Manejo inadecuado cliente
+                                                    </option>
+                                                    <option id="53c911ea60925s10resuldfs4e414asa4eg"
+                                                        value="Error en facturación">Error en facturación</option>
+
+                                                    <option id="53c911ea60925re10sul2c60qw1q0632dfe"
+                                                        value="Error etiqueta">Error etiqueta</option>
+                                                    <option id="53c911ea6092510resulsdfs4e414asa4eg"
+                                                        value="Error sello">
+                                                        Error sello</option>
+
+                                                    <option id="53c911ea60925210resulc60qw1q0632dfe"
+                                                        value="Error codigo de barra">Error codigo de barra</option>
+                                                    <option id="53c911ea60925res10ulsdfs4e414asa4eg"
+                                                        value="Error termoencogible">Error termoencogible</option>
+
+                                                    <option id="53c911ea60925res10ul2c60qw1q0632dfe"
+                                                        value="Error numero de lote">Error numero de lote</option>
+                                                    <option id="53c911ea60925re10sulsdfs4e414asa4eg"
+                                                        value="Error envase">
+                                                        Error envase</option>
+
+                                                    <option id="53c911ea6092res10ul52c60qw1q0632dfe"
+                                                        value="Error tapa y/o envase">Error tapa y/o envase</option>
+                                                    <option id="53c911ea609210resul5sdfs4e414asa4eg"
+                                                        value="Error de producción">Error de producción</option>
+
+                                                    <option id="53c911ea6092re10sul52c60qw1q0632dfe"
+                                                        value="Condiciones comerciales">Condiciones comerciales</option>
+                                                    <option id="53c911ea6092r10esul5sdfs4e414asa4eg"
+                                                        value="Atención al cliente">Atención al cliente</option>
+
+                                                    <option id="53c911ea60re10sul9252c60qw1q0632dfe" value="Transporte">
+                                                        Transporte</option>
+                                                    <option id="53c911ea60res10ul925sdfs4e414asa4eg"
+                                                        value="Error en el despacho">Error en el despacho</option>
+
+                                                    <option id="53c911ea609re10sul252c60qw1q0632dfe"
+                                                        value="Error de vendedor">Error de vendedor</option>
+                                                    <option id="53c911ea609re10sul25sdfs4e414asa4eg"
+                                                        value="Rotacion de los productos">Rotacion de los productos
+                                                    </option>
+                                                    <option id="53c911ea609re10sul25sdfs4e414asa4eg"
+                                                        value="Mayor valor en la factura">Mayor valor en la factura
+                                                    </option>
+
+
+
+                                                </datalist>
+                                            </td>
+                                            <td><input type="number" class="form-control text-center" id="credito10"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="reintegro10"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="reproceso10"
+                                                    style="font-weight: bold;"> </td>
+                                            <td><input type="number" class="form-control text-center" id="destruccion10"
+                                                    style="font-weight: bold;"> </td>
+
+
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                            <!--texarea-->
+                            <div class="form-floating mt-3">
+                                <textarea class="form-control" placeholder="Leave a comment here" id="observaciones"
+                                    style="height: 100px"></textarea>
+                                <label for="observaciones">Observaciones</label>
+                            </div>
+                            <input type="button" class="btn btn-danger mt-3" id="ideliminar" value="Eliminar"
+                                onclick="eliminar()">
+
+
+                            <!--fin texarea-->
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+                <!--fin card body 3-->
+
+
+
+                <input type="image" id="guardar" src="../pdf.png" onclick="desPdf()" width="50" height="50"
+                    style="float: right; margin-top: 1%;">
+
+                <input type="button" class="btn btn-dark btn-lg mt-3" style="float: right; margin-right: 2%;"
+                    id="gestion" onclick="gestionar()" value="Gestionar">
+
+            </div>
+            <!--Evelyn part-->
+
+
+            <div class="row" style="margin-left: 35%;">
+                <div class="col-xs-12 col-md-6">
+                    <div class="form-group">
+
+                        <div class="input-group">
+                            <input class="form-control form-control-sm" id="fichero2" type="file" style="float: left;">
+
+                            <input type="button" style="float: left; margin-left: 1%;" value="Adjuntar"
+                                class="btn btn-success" onclick="subirImg2()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="" id="link2" style="margin-left: 2%;"><img src="camara.png" style="width: 3%; height: 3%;" id="link2"></a>
+            <!-- <div class="card" style="width: 18rem;">-->
+            <div class="card-header">
+                <strong style="margin-left: 42%;"> Facturación</strong>
+            </div>
+
+<!-- Parte a ser copiada para la nueva seccion -->
+
+
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion" style="margin: 1% 1.5% 1% 1.5%; ">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Facturacion
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+
+                            <div class="input-group">
+                                <span class="input-group-text">1</span>
+                                <textarea class="form-control" aria-label="With textarea" id="facturacion1"></textarea>
+
+
+                            </div>
+
+                            <input type="button" class="btn btn-success" value="Registrar" style="margin-top: 2%;"
+                                onclick="RegisFact()">
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- </div> final evelyn-->
+
+                <div class="card-header">
+                    <strong style="margin-left: 42%;">3. Analisis de causas</strong>
+
+
+                </div>
+                <!--inicio acordion 3-->
+                <div class="accordion" id="accordionExample" style="margin: 1% 1.5% 1% 1.5%;">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Analisis
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+
+                                <div class="input-group">
+                                    <span class="input-group-text">1</span>
+                                    <textarea class="form-control" aria-label="With textarea" id="analisis1"></textarea>
+
+                                    <span class="input-group-text" style="margin-left: 2%;">2</span>
+                                    <textarea class="form-control" aria-label="With textarea" id="analisis2"></textarea>
+                                </div>
+
+                                <div class="input-group" style="margin-top: 1%;">
+                                    <span class="input-group-text">3</span>
+                                    <textarea class="form-control" aria-label="With textarea" id="analisis3"></textarea>
+
+                                    <span class="input-group-text" style="margin-left: 2%;">4</span>
+                                    <textarea class="form-control" aria-label="With textarea" id="analisis4"></textarea>
+                                </div>
+
+                                <div class="input-group" style="margin-top: 1%; width: 50%; margin-left: 25%;">
+
+
+                                    <span class="input-group-text" style="margin-left: 2%;">5</span>
+                                    <textarea class="form-control" aria-label="With textarea" id="analisis5"></textarea>
+                                </div>
+
+                                <table class="table mt-5">
+                                    <thead class="table"
+                                        style="background-color: #f28367; color: #fff; border-radius: 20px;">
+                                        <tr>
+                                            <th scope="col">Acciones a ejecutar</th>
+                                            <th scope="col">Responsable</th>
+                                            <th scope="col">Fecha propuesta</th>
+                                            <th scope="col" style="display: none;">¿Eficaz?</th>
+                                            <th scope="col" style="display: none;">Calificación</th>
+
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row"><textarea type="text" class="form-control"
+                                                    id="accioneje1"></textarea></th>
+
+                                            <td> <input type="email" class="form-control text-center"
+                                                    style="font-weight: bold;" id="responsa1"> </td>
+                                            <td><input type="text" class="form-control text-center" id="propuesta1"
+                                                    style="font-weight: bold;" disabled>
+                                            </td>
+
+                                            <td><input type="text" class="form-control text-center" id="eficaz1"
+                                                    style="font-weight: bold; display: none;" list="resul1021">
+                                                <datalist id="resul1021">
+                                                    <option id="53c911ea60925102resulc60qw1q06s32dfe" value="Si">Si
+                                                    </option>
+                                                    <option id="53c911ea60925s10resuldfs4e414assa4eg" value="No">No
+                                                    </option>
+
+                                                </datalist>
+                                            </td>
+
+                                            <td><input type="text" class="form-control text-center" id="calificacion1"
+                                                    style="font-weight: bold; width: 80%; display: none;" disabled>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"><textarea type="text" class="form-control"
+                                                    id="accioneje2"></textarea></th>
+
+                                            <td> <input type="email" class="form-control text-center"
+                                                    style="font-weight: bold;" id="responsa2"> </td>
+                                            <td><input type="text" class="form-control text-center" id="propuesta2"
+                                                    style="font-weight: bold;">
+                                            </td>
+
+                                            <td><input type="text" class="form-control text-center" id="eficaz2"
+                                                    style="font-weight: bold; display: none;" list="resul1022">
+                                                <datalist id="resul1022">
+                                                    <option id="53c911ea60925102resuflc60qw1q0632dfe" value="Si">Si
+                                                    </option>
+                                                    <option id="53c911ea60925s10resulfdfs4e414asa4eg" value="No">No
+                                                    </option>
+
+                                                </datalist>
+                                            </td>
+
+                                            <td><input type="number" class="form-control text-center" id="calificacion2"
+                                                    style="font-weight: bold; width: 80%; display: none;" disabled>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"><textarea type="text" class="form-control"
+                                                    id="accioneje3"></textarea></th>
+
+                                            <td> <input type="email" class="form-control text-center"
+                                                    style="font-weight: bold;" id="responsa3"> </td>
+                                            <td><input type="text" class="form-control text-center" id="propuesta1"
+                                                    style="font-weight: bold;">
+                                            </td>
+
+                                            <td><input type="text" class="form-control text-center" id="eficaz1"
+                                                    style="font-weight: bold; display: none;" list="resul1023">
+                                                <datalist id="resul1023">
+                                                    <option id="53c911ea60925102rdesulc60qw1q0632dfe" value="Si">Si
+                                                    </option>
+                                                    <option id="53c911ea60925s10resudldfs4e414asa4eg" value="No">No
+                                                    </option>
+
+                                                </datalist>
+                                            </td>
+
+                                            <td><input type="number" class="form-control text-center" id="calificacion3"
+                                                    style="font-weight: bold; width: 80%; display: none;" disabled>
+                                            </td>
+                                        </tr>
+
+                                        <!---->
+                                        <tr>
+                                            <th scope="row"><textarea type="text" class="form-control"
+                                                    id="accioneje4"></textarea></th>
+
+                                            <td> <input type="email" class="form-control text-center"
+                                                    style="font-weight: bold;" id="responsa4"> </td>
+                                            <td><input type="text" class="form-control text-center" id="propuesta4"
+                                                    style="font-weight: bold;">
+                                            </td>
+
+                                            <td><input type="text" class="form-control text-center" id="eficaz4"
+                                                    style="font-weight: bold; display: none;" list="resul1022">
+                                                <datalist id="resul1022">
+                                                    <option id="53c911ea60925102resuflc60qw1q0632dfe" value="Si">Si
+                                                    </option>
+                                                    <option id="53c911ea60925s10resulfdfs4e414asa4eg" value="No">No
+                                                    </option>
+
+                                                </datalist>
+                                            </td>
+
+                                            <td><input type="number" class="form-control text-center" id="calificacion4"
+                                                    style="font-weight: bold; width: 80%; display: none;" disabled>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"><textarea type="text" class="form-control"
+                                                    id="accioneje5"></textarea></th>
+
+                                            <td> <input type="email" class="form-control text-center"
+                                                    style="font-weight: bold;" id="responsa5"> </td>
+                                            <td><input type="text" class="form-control text-center" id="propuesta5"
+                                                    style="font-weight: bold;">
+                                            </td>
+
+                                            <td><input type="text" class="form-control text-center" id="eficaz5"
+                                                    style="font-weight: bold; display: none;" list="resul1023">
+                                                <datalist id="resul1023">
+                                                    <option id="53c911ea60925102rdesulc60qw1q0632dfe" value="Si">Si
+                                                    </option>
+                                                    <option id="53c911ea60925s10resudldfs4e414asa4eg" value="No">No
+                                                    </option>
+
+                                                </datalist>
+                                            </td>
+
+                                            <td><input type="number" class="form-control text-center" id="calificacion5"
+                                                    style="font-weight: bold; width: 80%; display: none;" disabled>
+                                            </td>
+                                        </tr>
+
+                                        <!---->
+
+
+
+
+                                    </tbody>
+                                </table>
+
+
+                                <input type="button" class="btn btn-success" value="Registrar" style="margin-top: 2%;"
+                                    onclick="RegisAnalisis()">
+
+                                <div class="card"
+                                    style="float: right; width: 15%; margin-bottom: 2%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                    <div class="card-body">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                id="radiApro1">
+                                            <label class="form-check-label" for="radiApro1">
+                                                Si
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                id="radiApro2" checked>
+                                            <label class="form-check-label" for="radiApro2">
+                                                No
+                                            </label>
+                                        </div>
+
+                                        <input type="button" class="btn btn-warning" value="Aprobar Eficacia"
+                                            style="margin-top: 2%; float: right;" onclick="Aprobacion()">
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-left: 20%;">
+                                    <div class="col-xs-12 col-md-6">
+                                        <div class="form-group">
+            
+                                            <div class="input-group">
+                                                <input class="form-control form-control-sm" id="fichero3" type="file"
+                                                    value="Vacio" name="Vacio"> <input type="button"
+                                                    class="btn btn-success" style="margin-left: 1%;" value="Adjuntar" onclick="subirImg3()">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="" id="link3"><img src="camara.png" style="width: 3%; height: 3%;" id="link3"></a>
+                                <a href="link3" disable></a>
+
+                               
+
+                                <input type="button" value="prueba" onclick="Imagen()" style="display: none;">
+
+
+
+
+
+
+
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+
+
+
+
+                </div>
+
+                <!--fin acordion-->
+
+
+                <!--fin card-->
+
+                <script src="plugins/sweetalert2/sweetalert2.all.min.js"></script>
+
+
+                <script src="https://code.jquery.com/jquery-3.6.0.js"
+                    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+                    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+                    crossorigin="anonymous"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+                    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+                    crossorigin="anonymous"></script>
+
+                <script src="http://momentjs.com/downloads/moment.min.js"></script>
+
+                <script src="calidad.js"></script>
+</body>
+
+</html>
