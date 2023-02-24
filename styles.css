@@ -374,7 +374,7 @@ button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
-  -webkit-appearance: button;
+-webkit-appearance: button;
 }
 button:not(:disabled),
 [type="button"]:not(:disabled),
@@ -2263,6 +2263,7 @@ progress {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
 @media (prefers-reduced-motion: reduce) {
   .form-control::file-selector-button {
     transition: none;
@@ -2721,6 +2722,7 @@ textarea.form-control-lg {
   justify-content: center;
   font-weight: bold;
 }
+
 
 .input-group {
   display: flex;

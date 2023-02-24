@@ -58,11 +58,14 @@
             <div class="card-header">
                 <strong style="display: flex; justify-content: center;">FORMATO</strong>
                 <hr>
-                <strong style= "display: flex; justify-content: center;">Requerimientos del Cliente</strong>
-                <input type="text" style="float: right;  margin-top: 15px; border: none; font-weight: bold; color: #00A651;" disabled id= "usuarioIni">
+                <strong style="display: flex; justify-content: center;">Requerimientos del Cliente</strong>
+                <input type="text"
+                    style="float: right;  margin-top: 15px; border: none; font-weight: bold; color: #00A651;" disabled
+                    id="usuarioIni">
             </div>
             <div class="card-body">
-                <label for="" style="">Código:</label> <input style="min-width: 8%; max-width: 40px; border-style: none;" type="text" id="codigo" value="FO-SIG-08" disabled>
+                <label for="">Código:</label> <input style="min-width: 8%; max-width: 40px; border-style: none;"
+                    type="text" id="codigo" value="FO-SIG-08" disabled>
 
                 <label for="">Versión:</label> <input style="min-width: 8%; max-width: 30px; border-style: none;"
                     type="text" id="version" value="08" disabled>
@@ -75,14 +78,15 @@
 
                 <input
                     style="float: right; border-style: none; width: 100px; text-align: center; font-weight: bold; color: rgb(252, 9, 9);"
-                    id="caso" type="number" value="1" disabled><label style="float: right; ">Caso
+                    id="caso" type="number" value="1" disabled><label style="float: right; ">Requerimiento
                     N°:</label>
 
                 <input type="date" style="min-width: 10%; float: right; margin-right: 2%; " id="fech"
                     placeholder="Fecha"><label style="float: right; margin-right: 0.5%; ">Fecha:</label>
             </div>
             <div class="card-header">
-                <strong style="display: flex; justify-content: center;">Espacio diligenciado por quien recibe el requerimiento del cliente</strong>
+                <strong style="display: flex; justify-content: center;">Espacio diligenciado por quien recibe el
+                    requerimiento del cliente</strong>
             </div>
             <input type="text" id="codLista" style="display: none;">
             <div class="card-body">
@@ -93,8 +97,7 @@
                 <div class="input-group " style="margin-top: 20px;">
 
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="name" placeholder="name@example.com"
-                            onchange="Nit(this.value)">
+                        <input type="text" class="form-control" id="name" placeholder="name@example.com" onchange="Nit(this.value)">
                         <label for="name">Nombre del Cliente</label>
                     </div>
 
@@ -107,34 +110,60 @@
                         <input type="text" class="form-control" id="marca" placeholder="name@example.com">
                         <label for="marca">Marca</label>
                     </div>
-                </div><div class="card-header">
+                </div>
+                <div class="card-header">
                     <strong style="display: flex; justify-content: center;"> 2. información del Producto </strong>
                 </div>
                 <div class="input-group prodinfo">
-
                     <div class="form-floating p2 mb-3">
                         <input type="text" class="form-control" id="nompro" placeholder="name@example.com">
                         <label for="nompro">Nombre del Producto en Desarrollo</label>
                     </div>
 
                     <div class="form-floating p2 mb-3" style="height: 100px;">
-                        <input type="text" class="form-control" id="colorDescription" placeholder="name@example.com" style="height: 100px;">
+                        <input type="text" class="form-control" id="colorDescription" placeholder="name@example.com"
+                            style="height: 100px;">
                         <label for="colordescription">Descripción del color simple</label>
                     </div>
 
                     <div class="form-floating p2 mb-3" style="height: 100px;">
-                        <input type="text" class="form-control" id="olorDescription" placeholder="name@example.com" style="height: 100px;">
+                        <input type="text" class="form-control" id="olorDescription" placeholder="name@example.com"
+                            style="height: 100px;">
                         <label for="olorDescription">Descripción de olor simple</label>
                     </div>
-                    <div class="form-floating mb-3"style="display: flex; width: 100%;">
+                    <div class="form-floating mb-3" style="display: flex; width: 100%;">
                         <div class="left-title">Forma Cosmetica:</div>
-                        <input type="text" class="form-control" id="muestra2" placeholder="Seleccione su area" list="reposici2">
+                        <input type="text" class="form-control" id="muestra2" placeholder="Seleccione su area"
+                            list="reposici2">
                         <datalist id="reposici2">
-                            <option >Forma cosmetica 1</option>
-                            <option >Forma cosmetica 2</option>
+                            <option>Forma cosmetica 1</option>
+                            <option>Forma cosmetica 2</option>
                         </datalist>
                     </div>
+                    <div class="form-floating mb-3" style="display: flex; width: 100%;">
+                        <div class="left-title">Apariencia:</div>
+                        <div class="form-control" style="display: flex; justify-content: center; align-items: center;">
+                            <input type="file" />
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3" style="display: flex; width: 100%;">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="ph1" placeholder="name@example.com" onchange="Nit(this.value)">
+                            <label for="ph1">pH de la muestra</label>
+                        </div>
+    
+                        <div class="form-floating mb-3" style='margin-left: 1%;'>
+                            <input type="text" class="form-control" id="number" placeholder="name@example.com">
+                            <label for="ph2">pH minimo interno</label>
+                        </div>
+    
+                        <div class="form-floating mb-3" style="margin-left: 1%;">
+                            <input type="text" class="form-control" id="ph3" placeholder="name@example.com">
+                            <label for="ph3">pH maximo interno</label>
+                        </div>
+                    </div>
                 </div>
+            </div>
 
 
         </div>
