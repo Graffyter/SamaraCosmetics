@@ -11254,4 +11254,47 @@ fieldset:disabled .btn {
   }
 }
 
+table.blueTable {
+  border: 2px solid #F28367;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+table.blueTable td, table.blueTable th {
+  border: 1px solid #AAAAAA;
+  padding: 3px 2px;
+}
+table.blueTable tbody td {
+  font-size: 13px;
+}
+table.blueTable tr:nth-child(even) {
+  background: #E2E2E2;
+}
+table.blueTable thead {
+  background: #F28367;
+  background: -moz-linear-gradient(top, #f5a28d 0%, #f38f76 66%, #F28367 100%);
+  background: -webkit-linear-gradient(top, #f5a28d 0%, #f38f76 66%, #F28367 100%);
+  background: linear-gradient(to bottom, #f5a28d 0%, #f38f76 66%, #F28367 100%);
+}
+table.blueTable thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+table.blueTable tfoot {
+  font-size: 14px;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+table.blueTable tfoot td {
+  font-size: 14px;
+}
+.buttonTable{
+  width: 100%;
+  border: 0;
+  background-color: #F28367;
+  font: var(--bs-font-sans-serif);
+  color: var(--bs-white);
+}
+
 /*# sourceMappingURL=bootstrap.css.map */
