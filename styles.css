@@ -2458,8 +2458,6 @@ textarea.form-control-lg {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  -webkit-print-color-adjust: exact;
-  color-adjust: exact;
 }
 .form-check-input[type="checkbox"] {
   border-radius: 0.25em;
@@ -11247,9 +11245,10 @@ fieldset:disabled .btn {
     display: none !important;
   }
 }
+/* TABLA FINAL */
 
 table.blueTable {
-  border: 2px solid #F28367;
+  border: 2px solid #AAAAAA;
   width: 100%;
   text-align: left;
   border-collapse: collapse;
@@ -11265,10 +11264,7 @@ table.blueTable tr:nth-child(even) {
   background: #E2E2E2;
 }
 table.blueTable thead {
-  background: #F28367;
-  background: -moz-linear-gradient(top, #f5a28d 0%, #f38f76 66%, #F28367 100%);
-  background: -webkit-linear-gradient(top, #f5a28d 0%, #f38f76 66%, #F28367 100%);
-  background: linear-gradient(to bottom, #f5a28d 0%, #f38f76 66%, #F28367 100%);
+  background: #AAAAAA;
 }
 table.blueTable thead th {
   font-size: 15px;
@@ -11286,7 +11282,15 @@ table.blueTable tfoot td {
 .buttonTable{
   width: 100%;
   border: 0;
-  background-color: #F28367;
+  background-color: #AAAAAA;
   font: var(--bs-font-sans-serif);
   color: var(--bs-white);
+}
+.buttonTable:active{
+  background-color: #9f9f9f;
+  font-size: 15px;
+}
+.tableInput{
+  width: 100%;
+  border: 0;
 }
