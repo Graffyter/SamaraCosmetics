@@ -45,13 +45,17 @@
                         <a class="nav-link" href="#" id="logout" style="font-weight: bold; color: #f28367;"
                             aria-current="page">Salir</a>
                     </li>
-
                 </ul>
             </div>
         </div>
     </nav>
 
     <div class="container" id="editor">
+        <div class="hojasDeNavegacion">
+            <button class="page1 selected">Hoja 1</button>
+            <button class="page2">Hoja 2</button>
+            <button class="page3">Hoja 3</button>
+        </div>
         <div class="card mt-5 mb-5"
             style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
             <!--inicio card body 1-->
@@ -84,13 +88,7 @@
                 <input type="date" style="min-width: 10%; float: right; margin-right: 2%; " id="fech"
                     placeholder="Fecha"><label style="float: right; margin-right: 0.5%; ">Fecha:</label>
             </div>
-            <div class="card-header">
-                <strong style="display: flex; justify-content: center;">Espacio diligenciado por quien recibe el
-                    requerimiento del cliente</strong>
-            </div>
-            <input type="text" id="codLista" style="display: none;">
             <div class="card-body">
-                <!---->
                 <div class="card-header">
                     <strong style="display: flex; justify-content: center;"> 1. información del cliente </strong>
                 </div>
@@ -112,276 +110,899 @@
                         <label for="marca">Marca</label>
                     </div>
                 </div>
-                <div class="card-header">
-                    <strong style="display: flex; justify-content: center;"> 2. información del Producto </strong>
-                </div>
-                <div class="input-group prodinfo">
-                    <div class="form-floating p2 mb-3">
-                        <input type="text" class="form-control" id="nompro" placeholder="name@example.com">
-                        <label for="nompro">Nombre del Producto en Desarrollo</label>
+                <div class="hoja1">
+                    <div class="card-header">
+                        <strong style="display: flex; justify-content: center;">Espacio diligenciado por quien recibe el
+                            requerimiento del cliente</strong>
                     </div>
-
-                    <div class="form-floating p2 mb-3" style="height: 100px;">
-                        <input type="text" class="form-control" id="colorDescription" placeholder="name@example.com"
-                            style="height: 100px;">
-                        <label for="colordescription">Descripción del color simple</label>
-                    </div>
-
-                    <div class="form-floating p2 mb-3" style="height: 100px;">
-                        <input type="text" class="form-control" id="olorDescription" placeholder="name@example.com"
-                            style="height: 100px;">
-                        <label for="olorDescription">Descripción de olor simple</label>
-                    </div>
-                    <div class="form-floating mb-3" style="display: flex; width: 100%;">
-                        <div class="left-title">Forma Cosmetica:</div>
-                        <input type="text" class="form-control" id="muestra2" placeholder="Seleccione su area"
-                            list="reposici2">
-                        <datalist id="reposici2">
-                            <option>Forma cosmetica 1</option>
-                            <option>Forma cosmetica 2</option>
-                        </datalist>
-                    </div>
-                    <div class="form-floating mb-3" style="display: flex; width: 100%;">
-                        <div class="left-title">Apariencia:</div>
-                        <div class="form-control" style="display: flex; justify-content: center; align-items: center;">
-                            <input type="file" />
-                        </div>
-                    </div>
-                    <div class="form-floating mb-3" style="display: flex; width: 100%;">
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="ph1" placeholder="name@example.com">
-                            <label for="ph1">pH de la muestra</label>
-                        </div>
-
-                        <div class="form-floating mb-3" style='margin-left: 1%;'>
-                            <input type="text" class="form-control" id="number" placeholder="name@example.com">
-                            <label for="ph2">pH minimo interno</label>
-                        </div>
-
-                        <div class="form-floating mb-3" style="margin-left: 1%;">
-                            <input type="text" class="form-control" id="ph3" placeholder="name@example.com">
-                            <label for="ph3">pH maximo interno</label>
-                        </div>
-                    </div>
-
-                    <div class="grid1 mb-3">
-                        <div class="form-floating fr mb-3">
-                            <input type="text" class="form-control" id="vis" placeholder="name@example.com">
-                            <label for="vis">Viscosidad</label>
-                        </div>
-
-                        <div class="form-floating fr mb-3">
-                            <input type="text" class="form-control" id="number" placeholder="name@example.com">
-                            <label for="ph2">Densidad</label>
-                        </div>
-
-                        <div class="form-floating fr mb-3">
-                            <input type="text" class="form-control" id="ph3" placeholder="name@example.com">
-                            <label for="ph3">Torque</label>
-                        </div>
-                        <div class="form-floating fr mb-3">
-                            <input type="text" class="form-control" id="ph1" placeholder="name@example.com">
-                            <label for="ph1">RPM</label>
-                        </div>
-
-                        <div class="form-floating fr mb-3">
-                            <input type="text" class="form-control" id="number" placeholder="name@example.com">
-                            <label for="ph2">Aguja</label>
-                        </div>
-
-                        <div class="form-floating fr mb-3 form-control" style="display: flex;">
-                            <div>
-                                <input name="cssCheckbox" id="demo_opt_1" type="checkbox" class="css-checkbox">
-                                <label for="demo_opt_1">producto posiblemente fotosensible</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-floating p2 mb-3" style="height: 100px;">
-                        <input type="text" class="form-control" id="colorDescription" placeholder="name@example.com"
-                            style="height: 100px;">
-                        <label for="colordescription">Condiciones especiales de preparacion</label>
-                    </div>
-                    <div style="display: flex;">
-                        <div class="muestras" style="display: flex; width: 100%">
-                            <div class="card-header" style="display: block">
-                                <strong style="display: flex; width: 600px; justify-content: center;"> Muestra de
-                                    Desarrollo </strong>
-                                <div class="form-floating fr mb-3">
-                                    <input type="number" class="form-control" id="number"
-                                        placeholder="name@example.com">
-                                    <label for="ph2">Numero de muestra aprobada</label>
-                                </div>
-                                <div class="form-floating fr mb-3">
-                                    <input type="date" class="form-control" id="number" placeholder="name@example.com">
-                                    <label for="ph2">Fecha de la elaboración de la muestra</label>
-                                </div>
-                                <div class="form-floating fr mb-3">
-                                    <input type="date" class="form-control" id="number" placeholder="name@example.com">
-                                    <label for="ph2">Fecha de aprobacion muestra de Desarrollo</label>
-                                </div>
-                                <div class="form-floating fr mb-3">
-                                    <input type="text" class="form-control" id="number" placeholder="name@example.com">
-                                    <label for="ph2">Número de Lote Piloto de Laboratorio</label>
-                                </div>
-                                <div class="form-floating fr mb-3">
-                                    <input type="date" class="form-control" id="number" placeholder="name@example.com">
-                                    <label for="ph2">Fecha de aprobacion de lote piloto de laboratorio</label>
-                                </div>
-                                <div class="form-floating fr mb-3">
-                                    <input type="date" class="form-control" id="number" placeholder="name@example.com">
-                                    <label for="ph2">Fecha de segunda aprobacion</label>
-                                </div>
-                            </div>
-                            <div class="muestrasIMG" style="width: 100%;">
-                                <div class="card-header" style="display: block; width: 100%;">
-                                    <strong style="display: flex; width: 100%; justify-content: center;"> Primera
-                                        muestra </strong>
-                                    <div class="form-floating fr mb-3">
-                                        <input type="file" class="form-control" id="number"
-                                            placeholder="name@example.com" style="height: 186px;">
-                                    </div>
-                                </div>
-                                <div class="card-header" style="display: block; width: 100%;">
-                                    <strong style="display: flex; width: 100%; justify-content: center;"> Muestra
-                                        aprobada </strong>
-                                    <div class="form-floating fr mb-3">
-                                        <input type="file" class="form-control" id="number"
-                                            placeholder="name@example.com" style="height: 186px;">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <input type="text" id="codLista" style="display: none;">
+                    <div class="card-body">
+                        <!---->
                     </div>
                     <div class="card-header">
-                        <strong style="display: flex; justify-content: center;"> Características del envase </strong>
+                        <strong style="display: flex; justify-content: center;"> 2. información del Producto 1 </strong>
                     </div>
                     <div class="input-group prodinfo">
                         <div class="form-floating p2 mb-3">
                             <input type="text" class="form-control" id="nompro" placeholder="name@example.com">
-                            <label for="nompro">Tipo envase primario</label>
+                            <label for="nompro">Nombre del Producto en Desarrollo</label>
                         </div>
-                        <div class="form-floating p2 mb-3">
-                            <input type="text" class="form-control" id="colorDescription"
-                                placeholder="name@example.com">
-                            <label for="colordescription">Peso / Volumen de presentacion con agua</label>
-                        </div>
-                        <div class="form-floating p2 mb-3">
-                            <input type="text" class="form-control" id="olorDescription" placeholder="name@example.com">
-                            <label for="olorDescription">Peso / Volumen de presentacion con producto aproximado</label>
-                        </div>
-                        <div class="form-floating p2 mb-3">
-                            <input type="text" class="form-control" id="olorDescription" placeholder="name@example.com">
-                        </div>
-                    </div>
-                    <div class="input-group prodinfo" style="display: flex;">
-                        <div class="form-floating p2 mb-3">
-                            <div class="card-header">
-                                <strong style="display: flex; justify-content: center;"> Minimo color </strong>
+                        <div class="ColorProduct">
+                            <div class="form-floating p2 mb-3" style="height: 100px;">
+                                <input type="text" class="form-control" id="colorDescription"
+                                    placeholder="name@example.com" style="height: 100px;">
+                                <label for="colordescription">Descripción del color simple</label>
                             </div>
-                            <input type="file" class="form-control" id="nompro" placeholder="name@example.com"
-                                style="height: 150px;">
-                        </div>
-                        <div class="form-floating p2 mb-3">
-                            <div class="card-header">
-                                <strong style="display: flex; justify-content: center;"> Medio color </strong>
+
+                            <div class="form-floating p2 mb-3" style="height: 100px;">
+                                <input type="text" class="form-control" id="olorDescription"
+                                    placeholder="name@example.com" style="height: 100px;">
+                                <label for="olorDescription">Descripción de olor simple</label>
                             </div>
-                            <input type="file" class="form-control" id="colorDescription" placeholder="name@example.com"
-                                style="height: 150px;">
                         </div>
-                        <div class="form-floating p2 mb-3">
-                            <div class="card-header">
-                                <strong style="display: flex; justify-content: center;"> Maximo color </strong>
+
+                        <div class="form-floating mb-3" style="display: flex; width: 100%;">
+                            <div class="left-title">Forma Cosmetica:</div>
+                            <input type="text" class="form-control" id="muestra2" placeholder="Seleccione su area"
+                                list="reposici2">
+                            <datalist id="reposici2">
+                                <option>Forma cosmetica 1</option>
+                                <option>Forma cosmetica 2</option>
+                            </datalist>
+                        </div>
+                        <div class="form-floating mb-3" style="display: flex; width: 100%;">
+                            <div class="left-title">Apariencia:</div>
+                            <div class="form-control"
+                                style="display: flex; justify-content: center; align-items: center;">
+                                <input type="file" />
                             </div>
-                            <input type="file" class="form-control" id="olorDescription" placeholder="name@example.com"
-                                style="height: 150px;">
                         </div>
-                    </div>
-                    <div class="form-floating p2 mb-3" style="height: 100px;">
-                        <input type="text" class="form-control" id="colorDescription" placeholder="name@example.com"
-                            style="height: 100px;">
-                        <label for="colordescription">Condiciones de almacenamiento</label>
-                    </div>
-                    <div class="form-floating p2 mb-3" style="height: 100px;">
-                        <input type="text" class="form-control" id="colorDescription" placeholder="name@example.com"
-                            style="height: 100px;">
-                        <label for="colordescription">Observaciones</label>
-                    </div>
-                    <div class="card-header">
-                        <strong style="display: flex; justify-content: center;"> 3. CALIDAD </strong>
-                    </div>
-                    <div class="card-header" style="background-color: white;">
-                        <strong style="display: flex; justify-content: center;"> Regulatorios </strong>
-                    </div>
-                    <form action="index.php" method="post" enctype="multipart/form-data"
-                        style="display: block; justify-content: center;">
-                        <p style="font-weight: bold; display: flex; justify-content: center;">Documentación requerida:
-                        </p>
-                        <p style="display: flex; justify-content: center;">cámara de comercio, RUT, Documento de
-                            identidad, Contrato, Proyecto de etiqueta, Información para el dossier, Comprobante de pago.
-                        </p>
-                        <input class="form-control" type="file" name="myfiles" multiple>
-                    </form>
-                    <div class="card-header" style="background-color: white;">
-                        <strong style="display: flex; justify-content: center;"> Ficha técnica del producto </strong>
-                    </div>
-                    <form action="index.php" method="post" enctype="multipart/form-data"
-                        style="display: block; justify-content: center;">
-                        <input class="form-control" type="file" name="myfiles" multiple>
-                    </form>
-                    <div class="card-header">
-                        <strong style="display: flex; justify-content: center;"> 4. PRODUCCIÓN </strong>
-                    </div>
-                    <div class="card-header" style="background-color: white;">
-                        <strong style="display: flex; justify-content: center;"> Desempeño prueba de transporte
-                        </strong>
-                    </div>
-                    <div class="form-floating p2 mb-3" style="height: 100px;">
-                        <input type="text" class="form-control" id="colorDescription" placeholder="name@example.com"
-                            style="height: 100px;">
-                    </div>
-                    <div class="card-header" style="background-color: white;">
-                        <strong style="display: flex; justify-content: center;">REFERENCIAS </strong>
-                    </div>
-                    <form action="index.php" method="post" enctype="multipart/form-data"
-                        style="display: block; justify-content: center;">
-                        <p style="display: flex; justify-content: center;">Luego de diligenciar complemente la anterior
-                            información, crear la referencia del producto.</p>
+                        <div class="form-floating mb-3" style="display: flex; width: 100%;">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="ph1" placeholder="name@example.com">
+                                <label for="ph1">pH de la muestra</label>
+                            </div>
+
+                            <div class="form-floating mb-3" style='margin-left: 1%;'>
+                                <input type="text" class="form-control" id="number" placeholder="name@example.com">
+                                <label for="ph2">pH minimo interno</label>
+                            </div>
+
+                            <div class="form-floating mb-3" style="margin-left: 1%;">
+                                <input type="text" class="form-control" id="ph3" placeholder="name@example.com">
+                                <label for="ph3">pH maximo interno</label>
+                            </div>
+                        </div>
+
+                        <div class="grid1 mb-3">
+                            <div class="form-floating fr mb-3">
+                                <input type="text" class="form-control" id="vis" placeholder="name@example.com">
+                                <label for="vis">Viscosidad</label>
+                            </div>
+
+                            <div class="form-floating fr mb-3">
+                                <input type="text" class="form-control" id="number" placeholder="name@example.com">
+                                <label for="ph2">Densidad</label>
+                            </div>
+
+                            <div class="form-floating fr mb-3">
+                                <input type="text" class="form-control" id="ph3" placeholder="name@example.com">
+                                <label for="ph3">Torque</label>
+                            </div>
+                            <div class="form-floating fr mb-3">
+                                <input type="text" class="form-control" id="ph1" placeholder="name@example.com">
+                                <label for="ph1">RPM</label>
+                            </div>
+
+                            <div class="form-floating fr mb-3">
+                                <input type="text" class="form-control" id="number" placeholder="name@example.com">
+                                <label for="ph2">Aguja</label>
+                            </div>
+
+                            <div class="form-floating fr mb-3 form-control" style="display: flex;">
+                                <div>
+                                    <input name="cssCheckbox" id="demo_opt_1" type="checkbox" class="css-checkbox">
+                                    <label for="demo_opt_1">producto posiblemente fotosensible</label>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-floating p2 mb-3" style="height: 100px;">
                             <input type="text" class="form-control" id="colorDescription" placeholder="name@example.com"
                                 style="height: 100px;">
-                            <label for="colordescription">Referencia</label>
+                            <label for="colordescription">Condiciones especiales de preparacion</label>
                         </div>
-                    </form>
-                    <div class="card-header">
-                        <strong style="display: flex; justify-content: center;"> 5. CONTROL DE CAMBIOS </strong>
-                    </div>
-                    <table class="blueTable">
-                        <thead>
-                            <tr>
-                                <th>N° de cambio</th>
-                                <th>Descripción del cambio</th>
-                                <th>Fecha</th>
-                                <th>Responsable del cambio </th>
-                                <th>Observaciones</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                            <td style="background-color: #aaaaaa;"><div class="buttonTable">Agregar fila</div></td>
-                            </tr>
+                        <div style="display: flex;">
+                            <div class="muestras" style="display: flex; width: 100%">
+                                <div class="card-header" style="display: block">
+                                    <strong style="display: flex; width: 600px; justify-content: center;"> Muestra de
+                                        Desarrollo </strong>
+                                    <div class="form-floating fr mb-3">
+                                        <input type="number" class="form-control" id="number"
+                                            placeholder="name@example.com">
+                                        <label for="ph2">Numero de muestra aprobada</label>
+                                    </div>
+                                    <div class="form-floating fr mb-3">
+                                        <input type="date" class="form-control" id="number"
+                                            placeholder="name@example.com">
+                                        <label for="ph2">Fecha de la elaboración de la muestra</label>
+                                    </div>
+                                    <div class="form-floating fr mb-3">
+                                        <input type="date" class="form-control" id="number"
+                                            placeholder="name@example.com">
+                                        <label for="ph2">Fecha de aprobacion muestra de Desarrollo</label>
+                                    </div>
+                                    <div class="form-floating fr mb-3">
+                                        <input type="text" class="form-control" id="number"
+                                            placeholder="name@example.com">
+                                        <label for="ph2">Número de Lote Piloto de Laboratorio</label>
+                                    </div>
+                                    <div class="form-floating fr mb-3">
+                                        <input type="date" class="form-control" id="number"
+                                            placeholder="name@example.com">
+                                        <label for="ph2">Fecha de aprobacion de lote piloto de laboratorio</label>
+                                    </div>
+                                    <div class="form-floating fr mb-3">
+                                        <input type="date" class="form-control" id="number"
+                                            placeholder="name@example.com">
+                                        <label for="ph2">Fecha de segunda aprobacion</label>
+                                    </div>
+                                </div>
+                                <div class="muestrasIMG" style="width: 100%;">
+                                    <div class="card-header" style="display: block; width: 100%;">
+                                        <strong style="display: flex; width: 100%; justify-content: center;"> Primera
+                                            muestra </strong>
+                                        <div class="form-floating fr mb-3">
+                                            <input type="file" class="form-control" id="number"
+                                                placeholder="name@example.com" style="height: 186px;">
+                                        </div>
+                                    </div>
+                                    <div class="card-header" style="display: block; width: 100%;">
+                                        <strong style="display: flex; width: 100%; justify-content: center;"> Muestra
+                                            aprobada </strong>
+                                        <div class="form-floating fr mb-3">
+                                            <input type="file" class="form-control" id="number"
+                                                placeholder="name@example.com" style="height: 186px;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-header">
+                            <strong style="display: flex; justify-content: center;"> Características del envase
+                            </strong>
+                        </div>
+                        <div class="input-group prodinfo">
+                            <div class="form-floating p2 mb-3">
+                                <input type="text" class="form-control" id="nompro" placeholder="name@example.com">
+                                <label for="nompro">Tipo envase primario</label>
+                            </div>
+                            <div class="form-floating p2 mb-3">
+                                <input type="text" class="form-control" id="colorDescription"
+                                    placeholder="name@example.com">
+                                <label for="colordescription">Peso / Volumen de presentacion con agua</label>
+                            </div>
+                            <div class="form-floating p2 mb-3">
+                                <input type="text" class="form-control" id="olorDescription"
+                                    placeholder="name@example.com">
+                                <label for="olorDescription">Peso / Volumen de presentacion con producto
+                                    aproximado</label>
+                            </div>
+                            <div class="form-floating p2 mb-3">
+                                <input type="text" class="form-control" id="olorDescription"
+                                    placeholder="name@example.com">
+                            </div>
+                        </div>
+                        <div class="input-group prodinfo" style="display: flex;">
+                            <div class="form-floating p2 mb-3">
+                                <div class="card-header">
+                                    <strong style="display: flex; justify-content: center;"> Minimo color </strong>
+                                </div>
+                                <input type="file" class="form-control" id="nompro" placeholder="name@example.com"
+                                    style="height: 150px;">
+                            </div>
+                            <div class="form-floating p2 mb-3">
+                                <div class="card-header">
+                                    <strong style="display: flex; justify-content: center;"> Medio color </strong>
+                                </div>
+                                <input type="file" class="form-control" id="colorDescription"
+                                    placeholder="name@example.com" style="height: 150px;">
+                            </div>
+                            <div class="form-floating p2 mb-3">
+                                <div class="card-header">
+                                    <strong style="display: flex; justify-content: center;"> Maximo color </strong>
+                                </div>
+                                <input type="file" class="form-control" id="olorDescription"
+                                    placeholder="name@example.com" style="height: 150px;">
+                            </div>
+                        </div>
+                        <div class="form-floating p2 mb-3" style="height: 100px;">
+                            <input type="text" class="form-control" id="colorDescription" placeholder="name@example.com"
+                                style="height: 100px;">
+                            <label for="colordescription">Condiciones de almacenamiento</label>
+                        </div>
+                        <div class="form-floating p2 mb-3" style="height: 100px;">
+                            <input type="text" class="form-control" id="colorDescription" placeholder="name@example.com"
+                                style="height: 100px;">
+                            <label for="colordescription">Observaciones</label>
+                        </div>
+                        <div class="card-header">
+                            <strong style="display: flex; justify-content: center;"> 3. CALIDAD </strong>
+                        </div>
+                        <div class="card-header" style="background-color: white;">
+                            <strong style="display: flex; justify-content: center;"> Regulatorios </strong>
+                        </div>
+                        <form action="index.php" method="post" enctype="multipart/form-data"
+                            style="display: block; justify-content: center;">
+                            <p style="font-weight: bold; display: flex; justify-content: center;">Documentación
+                                requerida:
+                            </p>
+                            <p style="display: flex; justify-content: center;">cámara de comercio, RUT, Documento de
+                                identidad, Contrato, Proyecto de etiqueta, Información para el dossier, Comprobante de
+                                pago.
+                            </p>
+                            <input class="form-control" type="file" name="myfiles" multiple>
+                        </form>
+                        <div class="card-header" style="background-color: white;">
+                            <strong style="display: flex; justify-content: center;"> Ficha técnica del producto
+                            </strong>
+                        </div>
+                        <form action="index.php" method="post" enctype="multipart/form-data"
+                            style="display: block; justify-content: center;">
+                            <input class="form-control" type="file" name="myfiles" multiple>
+                        </form>
+                        <div class="card-header">
+                            <strong style="display: flex; justify-content: center;"> 4. PRODUCCIÓN </strong>
+                        </div>
+                        <div class="card-header" style="background-color: white;">
+                            <strong style="display: flex; justify-content: center;"> Desempeño prueba de transporte
+                            </strong>
+                        </div>
+                        <div class="form-floating p2 mb-3" style="height: 100px;">
+                            <input type="text" class="form-control" id="colorDescription" placeholder="name@example.com"
+                                style="height: 100px;">
+                        </div>
+                        <div class="card-header" style="background-color: white;">
+                            <strong style="display: flex; justify-content: center;">REFERENCIAS </strong>
+                        </div>
+                        <form action="index.php" method="post" enctype="multipart/form-data"
+                            style="display: block; justify-content: center;">
+                            <p style="display: flex; justify-content: center;">Luego de diligenciar complemente la
+                                anterior
+                                información, crear la referencia del producto.</p>
+                            <div class="form-floating p2 mb-3" style="height: 100px;">
+                                <input type="text" class="form-control" id="colorDescription"
+                                    placeholder="name@example.com" style="height: 100px;">
+                                <label for="colordescription">Referencia</label>
+                            </div>
+                        </form>
+                        <div class="card-header">
+                            <strong style="display: flex; justify-content: center;"> 5. CONTROL DE CAMBIOS </strong>
+                        </div>
+                        <table class="blueTable">
+                            <thead>
+                                <tr>
+                                    <th>N° de cambio</th>
+                                    <th>Descripción del cambio</th>
+                                    <th>Fecha</th>
+                                    <th>Responsable del cambio </th>
+                                    <th>Observaciones</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <td style="background-color: #aaaaaa;">
+                                        <div class="buttonTable">Agregar fila</div>
+                                    </td>
+                                </tr>
                             </tfoot>
-                        <tbody class="tableBody">
-                            <tr class="fila">
-                                <td class="celda"><input type="text" class= 'tableInput'></td>
-                                <td class="celda"><input type="text" class= 'tableInput'></td>
-                                <td class="celda"><input type="text" class= 'tableInput'></td>
-                                <td class="celda"><input type="text" class= 'tableInput'></td>
-                                <td class="celda"><input type="text" class= 'tableInput'></td>
+                            <tbody class="tableBody">
+                                <tr class="fila">
+                                    <td class="celda"><input type="text" class='tableInput'></td>
+                                    <td class="celda"><input type="text" class='tableInput'></td>
+                                    <td class="celda"><input type="text" class='tableInput'></td>
+                                    <td class="celda"><input type="text" class='tableInput'></td>
+                                    <td class="celda"><input type="text" class='tableInput'></td>
+                                </tr>
+                            </tbody>
                             </tr>
-                            <tr>
-                        </tbody>
-                        </tr>
-                    </table>
+                        </table>
+                    </div>
+                </div>
+                <div class="hoja2 noSelected">
+                    <div class="card-header">
+                        <strong style="display: flex; justify-content: center;">Espacio diligenciado por quien recibe el
+                            requerimiento del cliente</strong>
+                    </div>
+                    <input type="text" id="codLista" style="display: none;">
+                    <div class="card-body">
+                        <!---->
+                    </div>
+                    <div class="card-header">
+                        <strong style="display: flex; justify-content: center;"> 2. información del Producto 2 </strong>
+                    </div>
+                    <div class="input-group prodinfo">
+                        <div class="form-floating p2 mb-3">
+                            <input type="text" class="form-control" id="nompro" placeholder="name@example.com">
+                            <label for="nompro">Nombre del Producto en Desarrollo</label>
+                        </div>
+                        <div class="ColorProduct">
+                            <div class="form-floating p2 mb-3" style="height: 100px;">
+                                <input type="text" class="form-control" id="colorDescription"
+                                    placeholder="name@example.com" style="height: 100px;">
+                                <label for="colordescription">Descripción del color simple</label>
+                            </div>
+
+                            <div class="form-floating p2 mb-3" style="height: 100px;">
+                                <input type="text" class="form-control" id="olorDescription"
+                                    placeholder="name@example.com" style="height: 100px;">
+                                <label for="olorDescription">Descripción de olor simple</label>
+                            </div>
+                        </div>
+
+                        <div class="form-floating mb-3" style="display: flex; width: 100%;">
+                            <div class="left-title">Forma Cosmetica:</div>
+                            <input type="text" class="form-control" id="muestra2" placeholder="Seleccione su area"
+                                list="reposici2">
+                            <datalist id="reposici2">
+                                <option>Forma cosmetica 1</option>
+                                <option>Forma cosmetica 2</option>
+                            </datalist>
+                        </div>
+                        <div class="form-floating mb-3" style="display: flex; width: 100%;">
+                            <div class="left-title">Apariencia:</div>
+                            <div class="form-control"
+                                style="display: flex; justify-content: center; align-items: center;">
+                                <input type="file" />
+                            </div>
+                        </div>
+                        <div class="form-floating mb-3" style="display: flex; width: 100%;">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="ph1" placeholder="name@example.com">
+                                <label for="ph1">pH de la muestra</label>
+                            </div>
+
+                            <div class="form-floating mb-3" style='margin-left: 1%;'>
+                                <input type="text" class="form-control" id="number" placeholder="name@example.com">
+                                <label for="ph2">pH minimo interno</label>
+                            </div>
+
+                            <div class="form-floating mb-3" style="margin-left: 1%;">
+                                <input type="text" class="form-control" id="ph3" placeholder="name@example.com">
+                                <label for="ph3">pH maximo interno</label>
+                            </div>
+                        </div>
+
+                        <div class="grid1 mb-3">
+                            <div class="form-floating fr mb-3">
+                                <input type="text" class="form-control" id="vis" placeholder="name@example.com">
+                                <label for="vis">Viscosidad</label>
+                            </div>
+
+                            <div class="form-floating fr mb-3">
+                                <input type="text" class="form-control" id="number" placeholder="name@example.com">
+                                <label for="ph2">Densidad</label>
+                            </div>
+
+                            <div class="form-floating fr mb-3">
+                                <input type="text" class="form-control" id="ph3" placeholder="name@example.com">
+                                <label for="ph3">Torque</label>
+                            </div>
+                            <div class="form-floating fr mb-3">
+                                <input type="text" class="form-control" id="ph1" placeholder="name@example.com">
+                                <label for="ph1">RPM</label>
+                            </div>
+
+                            <div class="form-floating fr mb-3">
+                                <input type="text" class="form-control" id="number" placeholder="name@example.com">
+                                <label for="ph2">Aguja</label>
+                            </div>
+
+                            <div class="form-floating fr mb-3 form-control" style="display: flex;">
+                                <div>
+                                    <input name="cssCheckbox" id="demo_opt_1" type="checkbox" class="css-checkbox">
+                                    <label for="demo_opt_1">producto posiblemente fotosensible</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-floating p2 mb-3" style="height: 100px;">
+                            <input type="text" class="form-control" id="colorDescription" placeholder="name@example.com"
+                                style="height: 100px;">
+                            <label for="colordescription">Condiciones especiales de preparacion</label>
+                        </div>
+                        <div style="display: flex;">
+                            <div class="muestras" style="display: flex; width: 100%">
+                                <div class="card-header" style="display: block">
+                                    <strong style="display: flex; width: 600px; justify-content: center;"> Muestra de
+                                        Desarrollo </strong>
+                                    <div class="form-floating fr mb-3">
+                                        <input type="number" class="form-control" id="number"
+                                            placeholder="name@example.com">
+                                        <label for="ph2">Numero de muestra aprobada</label>
+                                    </div>
+                                    <div class="form-floating fr mb-3">
+                                        <input type="date" class="form-control" id="number"
+                                            placeholder="name@example.com">
+                                        <label for="ph2">Fecha de la elaboración de la muestra</label>
+                                    </div>
+                                    <div class="form-floating fr mb-3">
+                                        <input type="date" class="form-control" id="number"
+                                            placeholder="name@example.com">
+                                        <label for="ph2">Fecha de aprobacion muestra de Desarrollo</label>
+                                    </div>
+                                    <div class="form-floating fr mb-3">
+                                        <input type="text" class="form-control" id="number"
+                                            placeholder="name@example.com">
+                                        <label for="ph2">Número de Lote Piloto de Laboratorio</label>
+                                    </div>
+                                    <div class="form-floating fr mb-3">
+                                        <input type="date" class="form-control" id="number"
+                                            placeholder="name@example.com">
+                                        <label for="ph2">Fecha de aprobacion de lote piloto de laboratorio</label>
+                                    </div>
+                                    <div class="form-floating fr mb-3">
+                                        <input type="date" class="form-control" id="number"
+                                            placeholder="name@example.com">
+                                        <label for="ph2">Fecha de segunda aprobacion</label>
+                                    </div>
+                                </div>
+                                <div class="muestrasIMG" style="width: 100%;">
+                                    <div class="card-header" style="display: block; width: 100%;">
+                                        <strong style="display: flex; width: 100%; justify-content: center;"> Primera
+                                            muestra </strong>
+                                        <div class="form-floating fr mb-3">
+                                            <input type="file" class="form-control" id="number"
+                                                placeholder="name@example.com" style="height: 186px;">
+                                        </div>
+                                    </div>
+                                    <div class="card-header" style="display: block; width: 100%;">
+                                        <strong style="display: flex; width: 100%; justify-content: center;"> Muestra
+                                            aprobada </strong>
+                                        <div class="form-floating fr mb-3">
+                                            <input type="file" class="form-control" id="number"
+                                                placeholder="name@example.com" style="height: 186px;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-header">
+                            <strong style="display: flex; justify-content: center;"> Características del envase
+                            </strong>
+                        </div>
+                        <div class="input-group prodinfo">
+                            <div class="form-floating p2 mb-3">
+                                <input type="text" class="form-control" id="nompro" placeholder="name@example.com">
+                                <label for="nompro">Tipo envase primario</label>
+                            </div>
+                            <div class="form-floating p2 mb-3">
+                                <input type="text" class="form-control" id="colorDescription"
+                                    placeholder="name@example.com">
+                                <label for="colordescription">Peso / Volumen de presentacion con agua</label>
+                            </div>
+                            <div class="form-floating p2 mb-3">
+                                <input type="text" class="form-control" id="olorDescription"
+                                    placeholder="name@example.com">
+                                <label for="olorDescription">Peso / Volumen de presentacion con producto
+                                    aproximado</label>
+                            </div>
+                            <div class="form-floating p2 mb-3">
+                                <input type="text" class="form-control" id="olorDescription"
+                                    placeholder="name@example.com">
+                            </div>
+                        </div>
+                        <div class="input-group prodinfo" style="display: flex;">
+                            <div class="form-floating p2 mb-3">
+                                <div class="card-header">
+                                    <strong style="display: flex; justify-content: center;"> Minimo color </strong>
+                                </div>
+                                <input type="file" class="form-control" id="nompro" placeholder="name@example.com"
+                                    style="height: 150px;">
+                            </div>
+                            <div class="form-floating p2 mb-3">
+                                <div class="card-header">
+                                    <strong style="display: flex; justify-content: center;"> Medio color </strong>
+                                </div>
+                                <input type="file" class="form-control" id="colorDescription"
+                                    placeholder="name@example.com" style="height: 150px;">
+                            </div>
+                            <div class="form-floating p2 mb-3">
+                                <div class="card-header">
+                                    <strong style="display: flex; justify-content: center;"> Maximo color </strong>
+                                </div>
+                                <input type="file" class="form-control" id="olorDescription"
+                                    placeholder="name@example.com" style="height: 150px;">
+                            </div>
+                        </div>
+                        <div class="form-floating p2 mb-3" style="height: 100px;">
+                            <input type="text" class="form-control" id="colorDescription" placeholder="name@example.com"
+                                style="height: 100px;">
+                            <label for="colordescription">Condiciones de almacenamiento</label>
+                        </div>
+                        <div class="form-floating p2 mb-3" style="height: 100px;">
+                            <input type="text" class="form-control" id="colorDescription" placeholder="name@example.com"
+                                style="height: 100px;">
+                            <label for="colordescription">Observaciones</label>
+                        </div>
+                        <div class="card-header">
+                            <strong style="display: flex; justify-content: center;"> 3. CALIDAD </strong>
+                        </div>
+                        <div class="card-header" style="background-color: white;">
+                            <strong style="display: flex; justify-content: center;"> Regulatorios </strong>
+                        </div>
+                        <form action="index.php" method="post" enctype="multipart/form-data"
+                            style="display: block; justify-content: center;">
+                            <p style="font-weight: bold; display: flex; justify-content: center;">Documentación
+                                requerida:
+                            </p>
+                            <p style="display: flex; justify-content: center;">cámara de comercio, RUT, Documento de
+                                identidad, Contrato, Proyecto de etiqueta, Información para el dossier, Comprobante de
+                                pago.
+                            </p>
+                            <input class="form-control" type="file" name="myfiles" multiple>
+                        </form>
+                        <div class="card-header" style="background-color: white;">
+                            <strong style="display: flex; justify-content: center;"> Ficha técnica del producto
+                            </strong>
+                        </div>
+                        <form action="index.php" method="post" enctype="multipart/form-data"
+                            style="display: block; justify-content: center;">
+                            <input class="form-control" type="file" name="myfiles" multiple>
+                        </form>
+                        <div class="card-header">
+                            <strong style="display: flex; justify-content: center;"> 4. PRODUCCIÓN </strong>
+                        </div>
+                        <div class="card-header" style="background-color: white;">
+                            <strong style="display: flex; justify-content: center;"> Desempeño prueba de transporte
+                            </strong>
+                        </div>
+                        <div class="form-floating p2 mb-3" style="height: 100px;">
+                            <input type="text" class="form-control" id="colorDescription" placeholder="name@example.com"
+                                style="height: 100px;">
+                        </div>
+                        <div class="card-header" style="background-color: white;">
+                            <strong style="display: flex; justify-content: center;">REFERENCIAS </strong>
+                        </div>
+                        <form action="index.php" method="post" enctype="multipart/form-data"
+                            style="display: block; justify-content: center;">
+                            <p style="display: flex; justify-content: center;">Luego de diligenciar complemente la
+                                anterior
+                                información, crear la referencia del producto.</p>
+                            <div class="form-floating p2 mb-3" style="height: 100px;">
+                                <input type="text" class="form-control" id="colorDescription"
+                                    placeholder="name@example.com" style="height: 100px;">
+                                <label for="colordescription">Referencia</label>
+                            </div>
+                        </form>
+                        <div class="card-header">
+                            <strong style="display: flex; justify-content: center;"> 5. CONTROL DE CAMBIOS </strong>
+                        </div>
+                        <table class="blueTable">
+                            <thead>
+                                <tr>
+                                    <th>N° de cambio</th>
+                                    <th>Descripción del cambio</th>
+                                    <th>Fecha</th>
+                                    <th>Responsable del cambio </th>
+                                    <th>Observaciones</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <td style="background-color: #aaaaaa;">
+                                        <div class="buttonTable">Agregar fila</div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                            <tbody class="tableBody">
+                                <tr class="fila">
+                                    <td class="celda"><input type="text" class='tableInput'></td>
+                                    <td class="celda"><input type="text" class='tableInput'></td>
+                                    <td class="celda"><input type="text" class='tableInput'></td>
+                                    <td class="celda"><input type="text" class='tableInput'></td>
+                                    <td class="celda"><input type="text" class='tableInput'></td>
+                                </tr>
+                            </tbody>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="hoja3 noSelected">
+                    <div class="card-header">
+                        <strong style="display: flex; justify-content: center;">Espacio diligenciado por quien recibe el
+                            requerimiento del cliente</strong>
+                    </div>
+                    <input type="text" id="codLista" style="display: none;">
+                    <div class="card-body">
+                        <!---->
+                    </div>
+                    <div class="card-header">
+                        <strong style="display: flex; justify-content: center;"> 2. información del Producto 3 </strong>
+                    </div>
+                    <div class="input-group prodinfo">
+                        <div class="form-floating p2 mb-3">
+                            <input type="text" class="form-control" id="nompro" placeholder="name@example.com">
+                            <label for="nompro">Nombre del Producto en Desarrollo</label>
+                        </div>
+                        <div class="ColorProduct">
+                            <div class="form-floating p2 mb-3" style="height: 100px;">
+                                <input type="text" class="form-control" id="colorDescription"
+                                    placeholder="name@example.com" style="height: 100px;">
+                                <label for="colordescription">Descripción del color simple</label>
+                            </div>
+
+                            <div class="form-floating p2 mb-3" style="height: 100px;">
+                                <input type="text" class="form-control" id="olorDescription"
+                                    placeholder="name@example.com" style="height: 100px;">
+                                <label for="olorDescription">Descripción de olor simple</label>
+                            </div>
+                        </div>
+
+                        <div class="form-floating mb-3" style="display: flex; width: 100%;">
+                            <div class="left-title">Forma Cosmetica:</div>
+                            <input type="text" class="form-control" id="muestra2" placeholder="Seleccione su area"
+                                list="reposici2">
+                            <datalist id="reposici2">
+                                <option>Forma cosmetica 1</option>
+                                <option>Forma cosmetica 2</option>
+                            </datalist>
+                        </div>
+                        <div class="form-floating mb-3" style="display: flex; width: 100%;">
+                            <div class="left-title">Apariencia:</div>
+                            <div class="form-control"
+                                style="display: flex; justify-content: center; align-items: center;">
+                                <input type="file" />
+                            </div>
+                        </div>
+                        <div class="form-floating mb-3" style="display: flex; width: 100%;">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="ph1" placeholder="name@example.com">
+                                <label for="ph1">pH de la muestra</label>
+                            </div>
+
+                            <div class="form-floating mb-3" style='margin-left: 1%;'>
+                                <input type="text" class="form-control" id="number" placeholder="name@example.com">
+                                <label for="ph2">pH minimo interno</label>
+                            </div>
+
+                            <div class="form-floating mb-3" style="margin-left: 1%;">
+                                <input type="text" class="form-control" id="ph3" placeholder="name@example.com">
+                                <label for="ph3">pH maximo interno</label>
+                            </div>
+                        </div>
+
+                        <div class="grid1 mb-3">
+                            <div class="form-floating fr mb-3">
+                                <input type="text" class="form-control" id="vis" placeholder="name@example.com">
+                                <label for="vis">Viscosidad</label>
+                            </div>
+
+                            <div class="form-floating fr mb-3">
+                                <input type="text" class="form-control" id="number" placeholder="name@example.com">
+                                <label for="ph2">Densidad</label>
+                            </div>
+
+                            <div class="form-floating fr mb-3">
+                                <input type="text" class="form-control" id="ph3" placeholder="name@example.com">
+                                <label for="ph3">Torque</label>
+                            </div>
+                            <div class="form-floating fr mb-3">
+                                <input type="text" class="form-control" id="ph1" placeholder="name@example.com">
+                                <label for="ph1">RPM</label>
+                            </div>
+
+                            <div class="form-floating fr mb-3">
+                                <input type="text" class="form-control" id="number" placeholder="name@example.com">
+                                <label for="ph2">Aguja</label>
+                            </div>
+
+                            <div class="form-floating fr mb-3 form-control" style="display: flex;">
+                                <div>
+                                    <input name="cssCheckbox" id="demo_opt_1" type="checkbox" class="css-checkbox">
+                                    <label for="demo_opt_1">producto posiblemente fotosensible</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-floating p2 mb-3" style="height: 100px;">
+                            <input type="text" class="form-control" id="colorDescription" placeholder="name@example.com"
+                                style="height: 100px;">
+                            <label for="colordescription">Condiciones especiales de preparacion</label>
+                        </div>
+                        <div style="display: flex;">
+                            <div class="muestras" style="display: flex; width: 100%">
+                                <div class="card-header" style="display: block">
+                                    <strong style="display: flex; width: 600px; justify-content: center;"> Muestra de
+                                        Desarrollo </strong>
+                                    <div class="form-floating fr mb-3">
+                                        <input type="number" class="form-control" id="number"
+                                            placeholder="name@example.com">
+                                        <label for="ph2">Numero de muestra aprobada</label>
+                                    </div>
+                                    <div class="form-floating fr mb-3">
+                                        <input type="date" class="form-control" id="number"
+                                            placeholder="name@example.com">
+                                        <label for="ph2">Fecha de la elaboración de la muestra</label>
+                                    </div>
+                                    <div class="form-floating fr mb-3">
+                                        <input type="date" class="form-control" id="number"
+                                            placeholder="name@example.com">
+                                        <label for="ph2">Fecha de aprobacion muestra de Desarrollo</label>
+                                    </div>
+                                    <div class="form-floating fr mb-3">
+                                        <input type="text" class="form-control" id="number"
+                                            placeholder="name@example.com">
+                                        <label for="ph2">Número de Lote Piloto de Laboratorio</label>
+                                    </div>
+                                    <div class="form-floating fr mb-3">
+                                        <input type="date" class="form-control" id="number"
+                                            placeholder="name@example.com">
+                                        <label for="ph2">Fecha de aprobacion de lote piloto de laboratorio</label>
+                                    </div>
+                                    <div class="form-floating fr mb-3">
+                                        <input type="date" class="form-control" id="number"
+                                            placeholder="name@example.com">
+                                        <label for="ph2">Fecha de segunda aprobacion</label>
+                                    </div>
+                                </div>
+                                <div class="muestrasIMG" style="width: 100%;">
+                                    <div class="card-header" style="display: block; width: 100%;">
+                                        <strong style="display: flex; width: 100%; justify-content: center;"> Primera
+                                            muestra </strong>
+                                        <div class="form-floating fr mb-3">
+                                            <input type="file" class="form-control" id="number"
+                                                placeholder="name@example.com" style="height: 186px;">
+                                        </div>
+                                    </div>
+                                    <div class="card-header" style="display: block; width: 100%;">
+                                        <strong style="display: flex; width: 100%; justify-content: center;"> Muestra
+                                            aprobada </strong>
+                                        <div class="form-floating fr mb-3">
+                                            <input type="file" class="form-control" id="number"
+                                                placeholder="name@example.com" style="height: 186px;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-header">
+                            <strong style="display: flex; justify-content: center;"> Características del envase
+                            </strong>
+                        </div>
+                        <div class="input-group prodinfo">
+                            <div class="form-floating p2 mb-3">
+                                <input type="text" class="form-control" id="nompro" placeholder="name@example.com">
+                                <label for="nompro">Tipo envase primario</label>
+                            </div>
+                            <div class="form-floating p2 mb-3">
+                                <input type="text" class="form-control" id="colorDescription"
+                                    placeholder="name@example.com">
+                                <label for="colordescription">Peso / Volumen de presentacion con agua</label>
+                            </div>
+                            <div class="form-floating p2 mb-3">
+                                <input type="text" class="form-control" id="olorDescription"
+                                    placeholder="name@example.com">
+                                <label for="olorDescription">Peso / Volumen de presentacion con producto
+                                    aproximado</label>
+                            </div>
+                            <div class="form-floating p2 mb-3">
+                                <input type="text" class="form-control" id="olorDescription"
+                                    placeholder="name@example.com">
+                            </div>
+                        </div>
+                        <div class="input-group prodinfo" style="display: flex;">
+                            <div class="form-floating p2 mb-3">
+                                <div class="card-header">
+                                    <strong style="display: flex; justify-content: center;"> Minimo color </strong>
+                                </div>
+                                <input type="file" class="form-control" id="nompro" placeholder="name@example.com"
+                                    style="height: 150px;">
+                            </div>
+                            <div class="form-floating p2 mb-3">
+                                <div class="card-header">
+                                    <strong style="display: flex; justify-content: center;"> Medio color </strong>
+                                </div>
+                                <input type="file" class="form-control" id="colorDescription"
+                                    placeholder="name@example.com" style="height: 150px;">
+                            </div>
+                            <div class="form-floating p2 mb-3">
+                                <div class="card-header">
+                                    <strong style="display: flex; justify-content: center;"> Maximo color </strong>
+                                </div>
+                                <input type="file" class="form-control" id="olorDescription"
+                                    placeholder="name@example.com" style="height: 150px;">
+                            </div>
+                        </div>
+                        <div class="form-floating p2 mb-3" style="height: 100px;">
+                            <input type="text" class="form-control" id="colorDescription" placeholder="name@example.com"
+                                style="height: 100px;">
+                            <label for="colordescription">Condiciones de almacenamiento</label>
+                        </div>
+                        <div class="form-floating p2 mb-3" style="height: 100px;">
+                            <input type="text" class="form-control" id="colorDescription" placeholder="name@example.com"
+                                style="height: 100px;">
+                            <label for="colordescription">Observaciones</label>
+                        </div>
+                        <div class="card-header">
+                            <strong style="display: flex; justify-content: center;"> 3. CALIDAD </strong>
+                        </div>
+                        <div class="card-header" style="background-color: white;">
+                            <strong style="display: flex; justify-content: center;"> Regulatorios </strong>
+                        </div>
+                        <form action="index.php" method="post" enctype="multipart/form-data"
+                            style="display: block; justify-content: center;">
+                            <p style="font-weight: bold; display: flex; justify-content: center;">Documentación
+                                requerida:
+                            </p>
+                            <p style="display: flex; justify-content: center;">cámara de comercio, RUT, Documento de
+                                identidad, Contrato, Proyecto de etiqueta, Información para el dossier, Comprobante de
+                                pago.
+                            </p>
+                            <input class="form-control" type="file" name="myfiles" multiple>
+                        </form>
+                        <div class="card-header" style="background-color: white;">
+                            <strong style="display: flex; justify-content: center;"> Ficha técnica del producto
+                            </strong>
+                        </div>
+                        <form action="index.php" method="post" enctype="multipart/form-data"
+                            style="display: block; justify-content: center;">
+                            <input class="form-control" type="file" name="myfiles" multiple>
+                        </form>
+                        <div class="card-header">
+                            <strong style="display: flex; justify-content: center;"> 4. PRODUCCIÓN </strong>
+                        </div>
+                        <div class="card-header" style="background-color: white;">
+                            <strong style="display: flex; justify-content: center;"> Desempeño prueba de transporte
+                            </strong>
+                        </div>
+                        <div class="form-floating p2 mb-3" style="height: 100px;">
+                            <input type="text" class="form-control" id="colorDescription" placeholder="name@example.com"
+                                style="height: 100px;">
+                        </div>
+                        <div class="card-header" style="background-color: white;">
+                            <strong style="display: flex; justify-content: center;">REFERENCIAS </strong>
+                        </div>
+                        <form action="index.php" method="post" enctype="multipart/form-data"
+                            style="display: block; justify-content: center;">
+                            <p style="display: flex; justify-content: center;">Luego de diligenciar complemente la
+                                anterior
+                                información, crear la referencia del producto.</p>
+                            <div class="form-floating p2 mb-3" style="height: 100px;">
+                                <input type="text" class="form-control" id="colorDescription"
+                                    placeholder="name@example.com" style="height: 100px;">
+                                <label for="colordescription">Referencia</label>
+                            </div>
+                        </form>
+                        <div class="card-header">
+                            <strong style="display: flex; justify-content: center;"> 5. CONTROL DE CAMBIOS </strong>
+                        </div>
+                        <table class="blueTable">
+                            <thead>
+                                <tr>
+                                    <th>N° de cambio</th>
+                                    <th>Descripción del cambio</th>
+                                    <th>Fecha</th>
+                                    <th>Responsable del cambio </th>
+                                    <th>Observaciones</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <td style="background-color: #aaaaaa;">
+                                        <div class="buttonTable">Agregar fila</div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                            <tbody class="tableBody">
+                                <tr class="fila">
+                                    <td class="celda"><input type="text" class='tableInput'></td>
+                                    <td class="celda"><input type="text" class='tableInput'></td>
+                                    <td class="celda"><input type="text" class='tableInput'></td>
+                                    <td class="celda"><input type="text" class='tableInput'></td>
+                                    <td class="celda"><input type="text" class='tableInput'></td>
+                                </tr>
+                            </tbody>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

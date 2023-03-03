@@ -4598,6 +4598,44 @@ fieldset:disabled .btn {
   color: #fff;
 }
 
+/* botones de navegacion */
+
+.hojasDeNavegacion{
+  position: relative;
+  display: flex;
+  align-items: end;
+  z-index: 999;
+  top: 192px;
+  left: 15px;
+
+}
+.selected{
+  height: 30px !important;
+  background-color: gray !important;
+}
+.page1{
+  margin: 5px;
+  height: 24px;
+  border-radius: 5px 5px 0 0;
+  border: none;
+  background-color: lightgrey;
+}
+.page2{
+  margin: 5px;
+  height: 24px;
+  border-radius: 5px 5px 0 0;
+  border: none;
+  background-color: lightgrey;
+}
+.page3{
+  margin: 5px;
+  height: 24px;
+  border-radius: 5px 5px 0 0;
+  border: none;
+  background-color: lightgrey;
+}
+
+
 .card {
   position: relative;
   display: flex;
@@ -4630,6 +4668,10 @@ fieldset:disabled .btn {
 .card > .card-header + .list-group,
 .card > .list-group + .card-footer {
   border-top: 0;
+}
+
+.noSelected{
+  display: none;
 }
 
 .card-body {
@@ -11248,40 +11290,40 @@ fieldset:disabled .btn {
 /* TABLA FINAL */
 
 table.blueTable {
-  border: 2px solid #AAAAAA;
+  border: 2px solid lightgrey;
   width: 100%;
   text-align: left;
   border-collapse: collapse;
 }
 table.blueTable td, table.blueTable th {
-  border: 1px solid #AAAAAA;
+  border: 1px solid lightgrey;
   padding: 3px 2px;
 }
 table.blueTable tbody td {
   font-size: 13px;
 }
 table.blueTable thead {
-  background: #AAAAAA;
+  background: lightgray;
 }
 table.blueTable thead th {
   font-size: 15px;
   font-weight: bold;
-  color: #FFFFFF;
 }
 table.blueTable tfoot {
   font-size: 14px;
   font-weight: bold;
-  color: #FFFFFF;
 }
 table.blueTable tfoot td {
   font-size: 14px;
 }
+.ColorProduct{
+  display: flex;
+}
 .buttonTable{
   width: 100%;
   border: 0;
-  background-color: #AAAAAA;
+  background-color: lightgrey;
   font: var(--bs-font-sans-serif);
-  color: var(--bs-white);
 }
 .buttonTable:active{
   background-color: #9f9f9f;
